@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>everyDay</title>
+    <style>
+        h3 {
+            padding: 0;
+            margin: 0px;
+        }
+
+        #father {
+            margin: 50px auto;
+            text-align: center;
+            width: 350px;
+            height: 400px;
+            padding: 15px 25px 0 25px;
+            background-color: rgba(37, 93, 175, .7);
+            position: relative;
+            border-radius: 10px;
+        }
+
+        .header {
+            text-align: center;
+            line-height: 30px;
+        }
+
+        #everyDay {
+            width: 340px;
+            height: 350px;
+            background-color: rgb(7, 130, 134);
+            /* border: 1px solid #666; */
+            box-shadow: 1px 0px 26px #4dc19c;
+            border-radius: 20px;
+            overflow: hidden;
+            padding: 5px 0 0 10px;
+            text-align: left;
+        }
+
+        #btnLeft {
+            position: absolute;
+            top: 20px;
+            left: 25px;
+
+        }
+
+        #btnRight {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+        }
+
+        .btn {
+            border: 0px;
+            background-color: gold;
+            border-radius: 10px;
+            outline: 0;
+        }
+
+        .day-div {
+            width: 35px;
+            height: 38px;
+            border-top: 1px solid black;
+            padding: 10px;
+            display: inline-block;
+            text-align: center;
+            line-height: 30px;
+        }
+        .today {
+            border-bottom: 1px solid #f10215;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="father">
+
+        <h3 class="header" id="mouth">一月</h3>
+
+        <button id="btnLeft" class="btn" onclick="DateDay.beforeMouth()">上一月</button>
+        <button id="btnRight" class="btn" onclick="DateDay.afterMouth()">下一月</button>
+
+        <div id="everyDay"></div>
+
+    </div>
+</body>
+<script>
+
+    const date = {
+        year: "2019",
+        mouth: "12",
+        day: ["31", "28", "31", "30", "31", "30", "31", "31", "30", "31", "30", "31"]
+    }
+    let aa;
+    let bb = [];
+    let cc = null;
+
+    var getYear = new Date().getFullYear();     // 获取年
+    var getMouth = new Date().getMonth() + 1;     // 获取月
+    var getDay = new Date().getDate();          // 获取日
+    var getWeek = new Date().getDay();          // 获取今天是周几
+
+    const dateDay = date.day;                   // 获取所有月份的天数
+    const BBady = document.getElementById('everyDay');
+    const setMouth = document.getElementById("mouth");
+    cc = getMouth;
+
+    var DateDay = function () { }
+
+    // 数据初始化
+    DateDay.init = () => {
+        setMouth.innerText = cc + "月";
+        DateDay.day(cc);
+    }
+
+    // 获取当前显示的月份的天数
+    DateDay.day = (v) => {
+
+        for (let i = 0; i < dateDay.length; i++) {  // 拿到各个月份的总天数
+            let xx = v - 1;
+            if (i == xx) {  // 判断是否是当前月份
+                aa = parseInt(dateDay[i]);
+                for (let k = 1; k <= aa; k++) {  // 根据总天数，分解获得一个月有多少天
+                    var dayDiv;
+                    if(k == getDay && v == cc){
+                        dayDiv = "<div class='day-div today'>" + k + "</div>";
+                    }else{
+                        dayDiv = "<div class='day-div'>" + k + "</div>";
+                    }
+                    BBady.innerHTML += dayDiv;
+                }
+            }
+        }
+
+    }
+
+    // 根据月份改变天数
+    DateDay.setMouthChange = (cc) => {
+        setMouth.innerText = cc + "月";
+        BBady.innerHTML = "";
+        DateDay.day(cc);
+    }
+
+    // 上个月
+    DateDay.beforeMouth = () => {
+        if (cc < 13 && cc > 1) {
+            cc--;
+            DateDay.setMouthChange(cc);
+        } else if (cc == 1) {
+            cc = 12
+            DateDay.setMouthChange(cc);
+        } else {
+            return;
+        }
+        // console.log(cc)
+    }
+
+    // 下个月
+    DateDay.afterMouth = () => {
+        if (cc < 12 && cc > 0) {
+            cc++;
+            DateDay.setMouthChange(cc);
+        } else if (cc == 12) {
+            cc = 1
+            DateDay.setMouthChange(cc);
+        } else {
+            return;
+        }
+        // console.log(cc)
+    }
+
+    // 页面渲染
+    window.onload = function () {
+        DateDay.init();
+    }
+
+</script>
+
+</html>
