@@ -68,7 +68,6 @@ DateDay.beforeMouth = () => {
     } else {
         return;
     }
-    // console.log(cc)
 }
 
 // 下个月
@@ -82,7 +81,6 @@ DateDay.afterMouth = () => {
     } else {
         return;
     }
-    // console.log(cc)
 }
 
 // 页面渲染
