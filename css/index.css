@@ -1,0 +1,65 @@
+h3 {
+    padding: 0;
+    margin: 0px;
+}
+
+#father {
+    margin: 50px auto;
+    text-align: center;
+    width: 350px;
+    height: 400px;
+    padding: 15px 25px 0 25px;
+    background-color: rgba(37, 93, 175, .7);
+    position: relative;
+    border-radius: 10px;
+}
+
+.header {
+    text-align: center;
+    line-height: 30px;
+}
+
+#everyDay {
+    width: 340px;
+    height: 350px;
+    background-color: rgb(7, 130, 134);
+    /* border: 1px solid #666; */
+    box-shadow: 1px 0px 26px #4dc19c;
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 5px 0 0 10px;
+    text-align: left;
+}
+
+#btnLeft {
+    position: absolute;
+    top: 20px;
+    left: 25px;
+
+}
+
+#btnRight {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+}
+
+.btn {
+    border: 0px;
+    background-color: gold;
+    border-radius: 10px;
+    outline: 0;
+}
+
+.day-div {
+    width: 35px;
+    height: 38px;
+    border-top: 1px solid black;
+    padding: 10px;
+    display: inline-block;
+    text-align: center;
+    line-height: 30px;
+}
+.today {
+    border-bottom: 1px solid #f10215;
+}
