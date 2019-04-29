@@ -19,12 +19,14 @@ var getWeek = new Date().getDay();          // 获取今天是周几
 const dateDay = date.day;                   // 获取所有月份的天数
 const BBady = document.getElementById('everyDay');
 const setMouth = document.getElementById("mouth");
+const setYear = document.getElementById("year");
 cc = getMouth;
 
 var DateDay = function () { }
 
 // 数据初始化
 DateDay.init = () => {
+    setYear.innerText = getYear + "年";
     setMouth.innerText = cc + "月";
     DateDay.day(cc);
 }
