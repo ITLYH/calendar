@@ -3,28 +3,31 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>日历</title>
     <link rel="stylesheet" href="./css/index.css">
 </head>
 
 <body>
+
+    <div class="header">
+        <span>日历</span>
+    </div>
+    
     <div id="father">
-
-        <h3 class="header" id="mouth">一月</h3>
-
+        <h3 class="mouth" id="mouth"></h3>
         <button id="btnLeft" class="btn" onclick="DateDay.beforeMouth()">上一月</button>
         <button id="btnRight" class="btn" onclick="DateDay.afterMouth()">下一月</button>
-
         <div id="everyDay"></div>
-
     </div>
+
 </body>
 
 <script>
     let version = new Date().getTime();
-    document.write("<script src='./js/index.js?v="+version+"'><"+"/script>")
+    document.write("<script src='./js/index.js?v=" + version + "'><" + "/script>")
 </script>
 
 </html>

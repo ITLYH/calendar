@@ -7,56 +7,76 @@ h3 {
     margin: 0px;
 }
 
-#father {
-    margin: 50px auto;
-    text-align: center;
-    width: 350px;
-    height: 400px;
-    padding: 15px 25px 0 25px;
-    background-color: rgba(37, 93, 175, .7);
-    position: relative;
-    border-radius: 10px;
+
+body{
+    overflow: hidden;
 }
 
-.header {
+.header{
+    width: 100%;
+    height: 50px;
+    background-color: rgb(250, 252, 250);
+    text-align: center;
+    line-height: 50px;
+    box-shadow: 0px -1px 12px #a1a09a;
+}
+
+.header > span {
+    font-size: 25px;
+}
+
+#father {
+    text-align: center;
+    width: 345px;
+    padding: 15px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.mouth {
     text-align: center;
     line-height: 30px;
+    font-size: 20px;
+    margin:8px 0px 42px 0px; 
+    /* position: absolute; */
+    /* top: 10px; */
 }
 
 #everyDay {
-    width: 340px;
+    width: 333px;
     height: 350px;
-    background-color: rgb(7, 130, 134);
+    background-color: rgb(248, 250, 248);
     /* border: 1px solid #666; */
-    box-shadow: 1px 0px 26px #4dc19c;
+    box-shadow: 1px 0px 26px #a1a09a;
     border-radius: 20px;
     overflow: hidden;
-    padding: 5px 0 0 10px;
+    padding: 9px 5px 5px 7px;
     text-align: left;
 }
 
 #btnLeft {
     position: absolute;
-    top: 20px;
+    top: 50px;
     left: 25px;
 
 }
 
 #btnRight {
     position: absolute;
-    top: 20px;
+    top: 50px;
     right: 25px;
 }
 
 .btn {
-    width: 50px;
-    height: 20px;
+    width: 70px;
+    height: 25px;
     border: 0px;
     background-color: gold;
-    border-radius: 10px;
+    border-radius: 15px;
     outline: 0;
-    line-height: 20px;
+    line-height: 25px;
     text-align: center;
+    box-shadow: 1px 0px 26px #e0dfd5;
 }
 
 .day-div {
