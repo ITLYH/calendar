@@ -26,21 +26,21 @@ var DateDay = function () { }
 
 // 数据初始化
 DateDay.init = () => {
-    setYear.innerText = getYear + "年";
-    setMouth.innerText = cc + "月";
+    setYear.innerText = getYear + " 年";
+    setMouth.innerText = cc + " 月";
     DateDay.day(cc);
 }
 
 // 获取当前显示的月份的天数
-DateDay.day = (v) => {
+DateDay.day = (cc) => {
 
     for (let i = 0; i < dateDay.length; i++) {  // 拿到各个月份的总天数
-        let xx = v - 1;
+        let xx = cc - 1;
         if (i == xx) {  // 判断是否是当前月份
             aa = parseInt(dateDay[i]);
             for (let k = 1; k <= aa; k++) {  // 根据总天数，分解获得一个月有多少天
                 var dayDiv;
-                if (k == getDay && v == cc) {
+                if (k == getDay && cc == getMouth) {
                     dayDiv = "<div class='day-div today'>" + k + "</div>";
                 } else {
                     dayDiv = "<div class='day-div'>" + k + "</div>";

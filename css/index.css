@@ -80,13 +80,14 @@ body{
 }
 
 .day-div {
-    width: 35px;
-    height: 38px;
+    width: 55px;
+    height: 58px;
     border-top: 1px solid black;
     padding: 10px;
     display: inline-block;
     text-align: center;
     line-height: 30px;
+    box-sizing: border-box;
 }
 .today {
     border-bottom: 1px solid #f10215;
