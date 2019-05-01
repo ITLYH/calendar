@@ -16,10 +16,13 @@ var getMouth = new Date().getMonth() + 1;     // 获取月
 var getDay = new Date().getDate();          // 获取日
 var getWeek = new Date().getDay();          // 获取今天是周几
 
+
 const dateDay = date.day;                   // 获取所有月份的天数
 const BBady = document.getElementById('everyDay');
 const setMouth = document.getElementById("mouth");
 const setYear = document.getElementById("year");
+const getWeekLength = document.getElementsByClassName("week");
+console.log(getWeekLength);
 cc = getMouth;
 
 var DateDay = function () { }
@@ -30,6 +33,8 @@ DateDay.init = () => {
     setMouth.innerText = cc + " 月";
     DateDay.day(cc);
 }
+
+// 判断每月的第一天是周几，再循环创建天的时候根据 周几 进行文本插入，再在插入之前放入前一个的最后几天 填充在插入之前；
 
 // 获取当前显示的月份的天数
 DateDay.day = (cc) => {
@@ -52,9 +57,25 @@ DateDay.day = (cc) => {
 
 }
 
+// 判断周几
+// DateDay.isWeek = () => {
+//     for (var l = 1; l <= getWeek; l++) {
+//         // 判断每个月的第一天是周几，就在循环前面加入几天
+//         for (let j = 0; j < dateDay.length; j++) {  // 各个月份的总天数
+//             let xx = cc - 1;
+//             if (xx == j) {  // 是当前月
+
+//             }
+//             dayDiv = "<div class='day-div'>" + k + "</div>";
+//             BBady.innerHTML += dayDiv;
+//         }
+//     }
+//     this.day()
+// }
+
 // 根据月份改变天数
 DateDay.setMouthChange = (cc) => {
-    setMouth.innerText = cc + "月";
+    setMouth.innerText = cc + " 月";
     BBady.innerHTML = "";
     DateDay.day(cc);
 }
