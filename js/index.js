@@ -106,6 +106,16 @@ DateDay.afterMouth = () => {
     }
 }
 
+$(window).on('scroll', function () {
+    let pageHeight = $('body').height(),
+        scrollTop = $(window).scrollTop(),
+        winHeight = $(window).height(),
+        thresold = pageHeight - scrollTop - winHeight;
+    if (thresold > -50 && thresold <= 20) {
+        console.log('end');
+    }
+});
+
 // 页面渲染
 window.onload = function () {
     DateDay.init();
