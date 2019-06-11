@@ -2,11 +2,6 @@
  * create 2019-04-25 by liyh 
  */
 
-const date = {
-    year: "2019",
-    mouth: "12",
-    day: ["31", "28", "31", "30", "31", "30", "31", "31", "30", "31", "30", "31"]
-}
 let aa;
 let bb = [];
 let cc = null;
@@ -16,8 +11,6 @@ var getMouth = new Date().getMonth() + 1;     // 获取月
 var getDay = new Date().getDate();          // 获取日
 var getWeek = new Date().getDay();          // 获取今天是周几
 
-
-const dateDay = date.day;                   // 获取所有月份的天数
 const BBady = document.getElementById('everyDay');
 const setMouth = document.getElementById("mouth");
 const setYear = document.getElementById("year");
@@ -27,57 +20,49 @@ cc = getMouth;
 
 var DateDay = function () { }
 
-// 数据初始化
-DateDay.init = () => {
-    setYear.innerText = getYear + " 年";
-    setMouth.innerText = cc + " 月";
-    DateDay.day(cc);
+// 获取每年选择的月的天数
+DateDay.mGetDate = (year, month)=> {
+    var d = new Date(year, month, 0);
+    return d.getDate();
 }
 
-// 判断每月的第一天是周几，再循环创建天的时候根据 周几 进行文本插入，再在插入之前放入前一个的最后几天 填充在插入之前；
+// 获取当前月份天数
+DateDay.getCountDays = () => {
+    var daysArr = [];
+    var curDate = new Date();
+    var curMonth = curDate.getMonth();
+    curDate.setMonth(curMonth + 1);
+    curDate.setDate(0);
+    var days = curDate.getDate();
+    // for (var i = 1; !(i > days); i++) {
+    //     daysArr.push(i);
+    // }
+    return days;
+}
 
 // 获取当前显示的月份的天数
-DateDay.day = (cc) => {
-
-    for (let i = 0; i < dateDay.length; i++) {  // 拿到各个月份的总天数
-        let xx = cc - 1;
-        if (i == xx) {  // 判断是否是当前月份
-            aa = parseInt(dateDay[i]);
-            for (let k = 1; k <= aa; k++) {  // 根据总天数，分解获得一个月有多少天
-                var dayDiv;
-                if (k == getDay && cc == getMouth) {
-                    dayDiv = "<div class='day-div today'>" + k + "</div>";
-                } else {
-                    dayDiv = "<div class='day-div'>" + k + "</div>";
-                }
-                BBady.innerHTML += dayDiv;
-            }
-        }
+DateDay.day = (CountDays,cc) => {
+    if(!CountDays){
+        var CountDays = DateDay.getCountDays();  // 总天数
     }
-
+    for (let k = 1; k <= CountDays; k++) {  
+        var dayDiv;
+        if (k == getDay && cc == getMouth) {
+            dayDiv = "<div class='day-div today'>" + k + "</div>";
+        } else {
+            dayDiv = "<div class='day-div'>" + k + "</div>";
+        }
+        BBady.innerHTML += dayDiv;
+    }
 }
-
-// 判断周几
-// DateDay.isWeek = () => {
-//     for (var l = 1; l <= getWeek; l++) {
-//         // 判断每个月的第一天是周几，就在循环前面加入几天
-//         for (let j = 0; j < dateDay.length; j++) {  // 各个月份的总天数
-//             let xx = cc - 1;
-//             if (xx == j) {  // 是当前月
-
-//             }
-//             dayDiv = "<div class='day-div'>" + k + "</div>";
-//             BBady.innerHTML += dayDiv;
-//         }
-//     }
-//     this.day()
-// }
 
 // 根据月份改变天数
 DateDay.setMouthChange = (cc) => {
+    setYear.innerText = getYear + " 年";
     setMouth.innerText = cc + " 月";
     BBady.innerHTML = "";
-    DateDay.day(cc);
+    var newDayCount = DateDay.mGetDate(getYear,cc)
+    DateDay.day(newDayCount,cc);
 }
 
 // 上个月
@@ -87,6 +72,7 @@ DateDay.beforeMouth = () => {
         DateDay.setMouthChange(cc);
     } else if (cc == 1) {
         cc = 12
+        getYear--;
         DateDay.setMouthChange(cc);
     } else {
         return;
@@ -99,7 +85,8 @@ DateDay.afterMouth = () => {
         cc++;
         DateDay.setMouthChange(cc);
     } else if (cc == 12) {
-        cc = 1
+        cc = 1;
+        getYear++;
         DateDay.setMouthChange(cc);
     } else {
         return;
@@ -116,7 +103,8 @@ $(window).on('scroll', function () {
     }
 });
 
-// 页面渲染
 window.onload = function () {
-    DateDay.init();
+    setYear.innerText = getYear + " 年";
+    setMouth.innerText = cc + " 月";
+    DateDay.day(null,cc);
 }
