@@ -1,17 +1,16 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <calender msg=""/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import calender from './components/calender.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    calender
   }
 }
 </script>
@@ -23,6 +22,9 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  padding: 0;
+}
+body{
+    margin: 0;
 }
 </style>
