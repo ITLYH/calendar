@@ -178,19 +178,19 @@ body {
 
 #btnLeft {
     position: absolute;
-    top: 50px;
+    top: 26px;
     left: 25px;
 }
 
 #btnRight {
     position: absolute;
-    top: 50px;
+    top: 26px;
     right: 25px;
 }
 
 .btn {
     width: 70px;
-    height: 25px;
+    height: 28px;
     border: 0px;
     background-color: gold;
     border-radius: 15px;
@@ -208,7 +208,7 @@ body {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     box-shadow: 0px 3px 7px #bbb9b0;
-    margin-top: 80px;
+    margin-top: 0px;
 }
 
 .week {
