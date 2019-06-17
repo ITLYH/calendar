@@ -1,11 +1,11 @@
 <template>
     <div id="app">
         <div class="header">
-            <span id="year" v-html="year"></span>
+            <span id="year" v-html="year + '年'"></span>
         </div>
 
         <div id="father">
-            <h3 class="mouth" id="mouth" v-html="mouth"></h3>
+            <h3 class="mouth" id="mouth" v-html="mouth+' 月'"></h3>
             <button id="btnLeft" class="btn" @click="beforeMouth">上一月</button>
             <button id="btnRight" class="btn" @click="afterMouth">下一月</button>
             <div class="weekDay">
@@ -33,8 +33,8 @@ export default {
     data() {
         const that = this;
         return {
-            year: getYear + " 年",
-            mouth: getMouth + " 月",
+            year: getYear,
+            mouth: getMouth,
             cc: getMouth,
             innerTxt: "",
         };
@@ -52,20 +52,20 @@ export default {
             var curMonth = curDate.getMonth();
             curDate.setMonth(curMonth + 1);
             curDate.setDate(0);
-            var days = curDate.getDate();
+            var dayCount = curDate.getDate();
             // for (var i = 1; !(i > days); i++) {
             //     daysArr.push(i);
             // }
-            return days;
+            return dayCount;
         },
         // 获取当前显示的月份的天数
-        days: function(CountDays, cc) {
+        days: function(CountDays,cc,toYear) {
             if (!CountDays) {
                 CountDays = this.getCountDays(); // 总天数
             }
-            let dayDiv;
-            for (let k = 1; k <= CountDays; k++) {
-                if (k == getDay && cc == getMouth) {
+            let dayDiv; 
+            for (let k = 1; k <= CountDays; k++) {  
+                if (k == getDay && cc == getMouth && toYear == getYear) {  // 当k等于当前日并且参数cc等于当前月份 ， 就改变样式
                     dayDiv = "<div class='day-div today'>" + k + "</div>";
                 } else {
                     dayDiv = "<div class='day-div'>" + k + "</div>";
@@ -75,43 +75,47 @@ export default {
         },
         // 根据月份改变天数
         setMouthChange: function(cc) {
+            this.innerTxt = "";
             var newDayCount = this.mGetDate(getYear, cc);
-            this.day(newDayCount, cc);
+            this.days(newDayCount, cc,this.year);
         },
         // 上个月
-        beforeMouth: cc => {
-            if (cc < 13 && cc > 1) {
-                this.cc--;
-                this.setMouthChange(cc);
-            } else if (cc == 1) {
-                this.cc = 12;
-                getYear--;
-                this.setMouthChange(cc);
+        beforeMouth:function() {
+            if (this.mouth < 13 && this.mouth > 1) {
+                this.mouth--;
+                this.setMouthChange(this.mouth);
+            } else if (this.mouth == 1) {
+                this.mouth = 12;
+                this.year--;
+                this.setMouthChange(this.mouth);
             } else {
                 return;
             }
         },
         // 下个月
-        afterMouth: cc => {
-            if (cc < 12 && cc > 0) {
-                this.cc++;
-                this.setMouthChange(cc);
-            } else if (cc == 12) {
-                this.cc = 1;
-                getYear++;
-                this.setMouthChange(cc);
+        afterMouth:function() {
+            if (this.mouth < 12 && this.mouth > 0) {
+                this.mouth++;
+                this.setMouthChange(this.mouth);
+            } else if (this.mouth == 12) {
+                this.mouth = 1;
+                this.year++;
+                this.setMouthChange(this.mouth);
             } else {
                 return;
             }
         }
     },
     created(){
-        this.days();
+        this.days(null,this.cc,getYear);
+    },
+    mounted(){
+        
     }
 };
 </script>
 
-<style scoped>
+<style>
 * {
     padding: 0;
     margin: 0;
