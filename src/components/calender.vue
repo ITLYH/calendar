@@ -26,7 +26,7 @@
 let getYear = new Date().getFullYear(); // 获取年
 let getMouth = new Date().getMonth() + 1; // 获取月
 let getDay = new Date().getDate(); // 获取日
-// let getWeek = new Date().getDay(); // 获取今天是周几
+let getWeek = new Date().getDay(); // 获取今天是周几
 
 export default {
     name: "calender",
