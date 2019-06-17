@@ -162,7 +162,7 @@ body {
 
 #everyDay {
     /* width: 333px; */
-    height: 350px;
+    height: 300px;
     background-color: rgb(248, 250, 248);
     /* border: 1px solid #666; */
     box-shadow: 0px 2px 7px #bbb9b0;
@@ -225,12 +225,12 @@ body {
 
 .day-div {
     width: 47px;
-    height: 58px;
+    height: 40px;
     /* border-top: 1px solid black; */
-    padding: 10px;
+    padding-top: 8px;
     display: inline-block;
     text-align: center;
-    line-height: 30px;
+    line-height: 20px;
     box-sizing: border-box;
     /* flex-wrap: wrap; */
 }
