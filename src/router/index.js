@@ -10,6 +10,8 @@ Vue.use(VueRouter);
 
 const router = new VueRouter({
     routes: [
+        { path: '*', redirect: '/calender'},
+        // { path: '*', name: 'calender', component: calender },
         { path: '/calender', name: 'calender', component: calender },
         { path: '/main', name: 'main', component: main },
         { path: '/personalCenter', name: 'personalCenter', component: personalCenter },

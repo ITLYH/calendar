@@ -3,7 +3,7 @@
         <!-- <calender msg/> -->
         <ul id="footTab">
             <li class="tab">
-                <router-link to="/">
+                <router-link to="/calendar">
                     <p class="icon iconfont icon-calendar"></p>
                     <p>calender</p>
                 </router-link>
