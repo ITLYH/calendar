@@ -1,0 +1,12 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+input{
+    outline: none;
+    border: 0px;
+}

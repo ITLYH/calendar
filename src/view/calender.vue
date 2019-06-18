@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+    <div>
         <div class="header">
             <span id="year" v-html="year + '年'"></span>
         </div>
@@ -23,10 +23,10 @@
 </template>
 
 <script>
-let getYear = new Date().getFullYear(); // 获取年
-let getMouth = new Date().getMonth() + 1; // 获取月
-let getDay = new Date().getDate(); // 获取日
-let getWeek = new Date().getDay(); // 获取今天是周几
+let getYear = new Date().getFullYear();     // 获取年
+let getMouth = new Date().getMonth() + 1;   // 获取月
+let getDay = new Date().getDate();          // 获取日
+let getWeek = new Date().getDay();          // 获取今天是周几
 
 export default {
     name: "calender",
@@ -40,32 +40,31 @@ export default {
         };
     },
     methods: {
+
         // 获取每年选择的月的天数
         mGetDate: (year, month) => {
             var d = new Date(year, month, 0);
             return d.getDate();
         },
+
         // 获取当前月份天数
         getCountDays: () => {
-            //   var daysArr = [];
             var curDate = new Date();
             var curMonth = curDate.getMonth();
             curDate.setMonth(curMonth + 1);
             curDate.setDate(0);
             var dayCount = curDate.getDate();
-            // for (var i = 1; !(i > days); i++) {
-            //     daysArr.push(i);
-            // }
             return dayCount;
         },
+
         // 获取当前显示的月份的天数
         days: function(CountDays,cc,toYear) {
             if (!CountDays) {
-                CountDays = this.getCountDays(); // 总天数
+                CountDays = this.getCountDays(); 
             }
             let dayDiv; 
             for (let k = 1; k <= CountDays; k++) {  
-                if (k == getDay && cc == getMouth && toYear == getYear) {  // 当k等于当前日并且参数cc等于当前月份 ， 就改变样式
+                if (k == getDay && cc == getMouth && toYear == getYear) { 
                     dayDiv = "<div class='day-div today'>" + k + "</div>";
                 } else {
                     dayDiv = "<div class='day-div'>" + k + "</div>";
@@ -73,12 +72,14 @@ export default {
                 this.innerTxt += dayDiv;
             }
         },
+
         // 根据月份改变天数
         setMouthChange: function(cc) {
             this.innerTxt = "";
             var newDayCount = this.mGetDate(getYear, cc);
             this.days(newDayCount, cc,this.year);
         },
+
         // 上个月
         beforeMouth:function() {
             if (this.mouth < 13 && this.mouth > 1) {
@@ -92,6 +93,7 @@ export default {
                 return;
             }
         },
+
         // 下个月
         afterMouth:function() {
             if (this.mouth < 12 && this.mouth > 0) {
