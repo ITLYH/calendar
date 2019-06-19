@@ -1,6 +1,7 @@
 <template>
     <div id="app">
         <!-- <calender msg/> -->
+        <router-view></router-view>
         <ul id="footTab">
             <li class="tab">
                 <router-link to="/calendar">
@@ -27,7 +28,6 @@
                 </router-link>
             </li>
         </ul>
-        <router-view></router-view>
     </div>
 </template>
 

@@ -1,0 +1,19 @@
+.search {
+    height: 52px;
+}
+.mint-search {
+    /* opacity: 0; */
+    height: 100%;
+    background: #fff; 
+}
+.mint-searchbar {
+    opacity: 1;
+    background: rgb(255, 204, 0);
+}
+.mint-searchbar-core{
+    padding-left: 10px;
+}
+.mint-searchbar-inner{
+    padding-left: 10px;
+    border-radius: 25px;
+}
