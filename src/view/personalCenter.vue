@@ -3,7 +3,7 @@
 </template>
 <script>
 export default ({
-    '/personalCenter': "personalCenter",
+    name: "personalCenter",
 })
 </script>
 

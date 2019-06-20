@@ -8,7 +8,7 @@
 }
 .mint-searchbar {
     opacity: 1;
-    background: rgb(255, 204, 0);
+    background: #FFCC00;
 }
 .mint-searchbar-core{
     padding-left: 10px;
@@ -16,4 +16,20 @@
 .mint-searchbar-inner{
     padding-left: 10px;
     border-radius: 25px;
+}
+.mint-cell-title{
+    text-align: left;
+}
+.mint-cell{
+    background-color: #FFCC00;
+    min-height:35px;
+}
+.mint-cell-allow-right::after{
+    color: black;
+}
+.mint-swipe{
+    width: 100%;
+}
+.mint-swipe-item{
+    display: flex;
 }

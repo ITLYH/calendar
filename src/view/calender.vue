@@ -238,7 +238,7 @@ body {
 }
 .today {
     /* border-bottom: 1px solid #f10215; */
-    background-color: rgb(255, 204, 0);
+    background-color: #FFCC00;
     border-bottom-right-radius: 27.5px;
     border-bottom-left-radius: 27.5px;
 }
