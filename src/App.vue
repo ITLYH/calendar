@@ -47,7 +47,7 @@ export default {
     text-align: center;
     color: #2c3e50;
     padding: 0;
-    height: 667px;
+    /* height: 667px; */
 }
 #footTab{
     display: flex;
