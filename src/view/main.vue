@@ -135,8 +135,8 @@ export default {
 </script>
 <style scoped>
 .swiper_bar {
-    height: 115px;
-    padding: 15px 0px 15px 0px;
+    height: 125px;
+    padding: 13px 0px 8px 0px;
     background:url("../../static/image/nav-bg.jpg") no-repeat center;
     /* background-size:  100% 165px; */
 }
