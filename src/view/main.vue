@@ -130,7 +130,7 @@
             <mt-tab-container v-model="selected">
                 <mt-tab-container-item id="1">
                     <div class="tab_barList">
-                        <div >
+                        <div class="tab_barList_video_box">
                             <video
                                 width="100%"
                                 height="250"
@@ -141,11 +141,14 @@
                             ></video>
                         </div>
                         <div class="tab_barList_content">
-                            <p>1</p>
-                            <p>2</p>
-                            <div>
-                                <p>3</p>
-                                <span>4</span>
+                            <div class="content_left">
+                                <img class="user_img" src="../../static/image/user_1.jpg" alt>
+                                <span>X先生</span>
+                            </div>
+                            <div class="content_right">
+                                <i class="iconfont icon-comments"></i>&nbsp;
+                                <span >99+</span>&nbsp;&nbsp;
+                                <span></span>
                             </div>
                         </div>
                     </div>
@@ -221,13 +224,29 @@ export default {
 }
 .cell_hot {
 }
+.tab_barList {
+    box-shadow: 0 0 2px 0;
+    margin-bottom: 52px;
+}
 .tab_barList_video {
-    /* width: 70px;
-    height: 35px; */
     display: inline-block;
 }
 .tab_barList_content {
-    display: inline-block;
+    padding: 5px;
+    height: 38px;
+}
+.user_img {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+.content_left {
+    float: left;
+}
+.content_right {
+    float: right;
 }
 </style>
 

@@ -126,12 +126,6 @@ h3 {
     padding: 0;
     margin: 0px;
 }
-
-body {
-    /* overflow: hidden; */
-    /* height: 2000px; */
-}
-
 .header {
     width: 100%;
     height: 50px;
