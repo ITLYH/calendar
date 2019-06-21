@@ -33,3 +33,11 @@
 .mint-swipe-item{
     display: flex;
 }
+.mint-tab-item-label:hover{
+    color: #FFCC00;
+    font-size: 15px;
+}
+.mint-navbar .mint-tab-item.is-selected{
+    border-bottom: 1.5px solid #FFCC00;
+    color: #FFCC00;
+}

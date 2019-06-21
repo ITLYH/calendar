@@ -128,7 +128,7 @@ h3 {
 }
 
 body {
-    overflow: hidden;
+    /* overflow: hidden; */
     /* height: 2000px; */
 }
 

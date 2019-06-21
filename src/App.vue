@@ -41,28 +41,26 @@ export default {
 @import '../static/css/common.css';
 @import '../static/font/iconfont.css';
 #app {
-    font-family: "Avenir", Helvetica, Arial, sans-serif;
+    font-family: "微软雅黑","Microsoft YaHei","Avenir", Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
     padding: 0;
-    /* height: 667px; */
 }
 #footTab{
-    display: flex;
-    position: absolute;
     bottom: 0px;
     width: 100%;
     height: 50px;
     line-height: 20px;
-    background-color: rgb(255, 204, 0);
+    background-color: #FFCC00;
+    position: fixed;
+    bottom: 0px;
 }
 .tab{
-    flex: .25;
     display: inline-block;
     text-align: center;
-    width: 100%;
+    width: 25%;
     padding-top: 5px;
     color: azure;
 }
