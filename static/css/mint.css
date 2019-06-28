@@ -41,3 +41,17 @@
     border-bottom: 1.5px solid #FFCC00;
     color: #FFCC00;
 }
+.mint-navbar{
+    height: 30px;
+}
+.mint-navbar .mint-tab-item {
+    padding: 9px 0;
+}
+.mint-cell-wrapper{
+    font-size: 12px;
+}
+.mint-header{
+    background-color: #FFCC00;
+    font-size: 20px;
+    border-bottom: 0.5px solid #fff;
+}

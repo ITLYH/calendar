@@ -1,13 +1,15 @@
 <template>
-    <div id="login"> 
+    <div id="share">
         <div>
-            
+            <div>
+                
+            </div>
         </div>
     </div>
 </template>
 <script>
 export default {
-    name:"login",
+    name:"share",
     data(){
         return {
 
@@ -16,7 +18,3 @@ export default {
 }
 </script>
 
-
-<style>
-
-</style>
