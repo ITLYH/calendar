@@ -2,23 +2,23 @@
     <div id="app">
         <!-- <calender msg/> -->
         <router-view></router-view>
-        <ul id="footTab">
+        <!-- <ul id="footTab">
             <li class="tab">
                 <router-link to="/calendar">
                     <p class="icon iconfont icon-calendar"></p>
-                    <p>calender</p>
+                    <p>Calender</p>
                 </router-link>
             </li>
             <li class="tab">
                 <router-link to="/main">
                     <p class="icon iconfont icon-warehouse-delivery"></p>
-                    <p>main</p>
+                    <p>Main</p>
                 </router-link>
             </li>
             <li class="tab">
                 <router-link to="/lifeInfo">
                     <p class="icon iconfont icon-jewelry"></p>
-                    <p>lifeInfo</p>
+                    <p>LifeInfo</p>
                 </router-link>
             </li>
             <li class="tab">
@@ -27,7 +27,7 @@
                     <p>Center</p>
                 </router-link>
             </li>
-        </ul>
+        </ul> -->
     </div>
 </template>
 
