@@ -39,8 +39,8 @@
 </template>
 <script>
 import { Field, Button, Popup } from "mint-ui";
-import {mapState, mapMutations} from 'vuex';
-import tips from '../components/showTips';
+import { mapState, mapMutations } from "vuex";
+import tips from "../components/showTips";
 export default {
     name: "login",
     data() {
@@ -50,16 +50,23 @@ export default {
             saveUsername: ["admin", "username"],
             savePsw: "111111",
             popupVisible: false,
-            tipsData: "",
+            tipsData: ""
         };
     },
-    components:{
-        'show-tips':tips,
+    components: {
+        "show-tips": tips
     },
     created() {
         document.body.style.paddingBottom = "0px";
     },
     computed: {
+        keyDown(e) {
+            let ev = window.event || e;
+            if (ev.keyCode == 13) {
+                //你要执行的方法
+                this.loginIn();
+            }
+        }
     },
     methods: {
         loginIn() {
@@ -71,16 +78,18 @@ export default {
 
                 localStorage.setItem("username", this.username);
                 localStorage.setItem("token", token);
-
-                this.$store.commit("updateUserInfo", { username: this.username });
+                
                 this.$store.commit("loginType", true);
+                this.$store.commit("updateUserInfo", {
+                    username: this.username
+                });
 
                 this.$router.push({ path: "/nav" });
             } else {
                 this.username = "";
                 this.password = "";
                 this.popupVisible = true;
-                this.tipsData = '用户名或密码错误，请重新输入。';
+                this.tipsData = "用户名或密码错误，请重新输入。";
             }
         },
         // 随机字母
