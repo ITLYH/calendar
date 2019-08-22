@@ -111,21 +111,11 @@ export default {
     created(){
         this.days(null,this.cc,getYear);
     },
-    mounted(){
-        
-    }
 };
 </script>
 
-<style>
-* {
-    padding: 0;
-    margin: 0;
-}
-h3 {
-    padding: 0;
-    margin: 0px;
-}
+
+<style scoped>
 .header {
     width: 100%;
     height: 50px;

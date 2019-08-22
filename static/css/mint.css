@@ -52,6 +52,7 @@
 }
 .mint-header{
     background-color: #FFCC00;
-    font-size: 20px;
+    font-size: 18px;
     border-bottom: 0.5px solid #fff;
+    box-shadow: 5px 2px 26px #ccc;
 }

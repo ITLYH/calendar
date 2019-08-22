@@ -1,8 +1,8 @@
 <template>
     <div id="personalCenter">
-        <nav class="top">
+        <div class="top">
             <mt-header fixed title="个人中心"></mt-header>
-        </nav>
+        </div>
         <main class="main">
             <div class="main_user_img">
                 <img class="user_img" src="../../static/image/user_1.jpg" alt>
@@ -172,6 +172,7 @@ export default {
     border-bottom: 1px solid #fff;
     box-sizing: border-box;
     background-color: #FFCC00;
+
 }
 .main {
 }
@@ -186,10 +187,11 @@ export default {
     height: 75px;
     width: 75px;
     border-radius: 37.5px;
+    box-shadow: 1px 2px 26px #a79118;
 }
 .user_name {
     color: #fff;
-    font-size: 20px;
+    font-size: 16px;
 }
 .user_count {
     display: inline-block;

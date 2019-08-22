@@ -24,90 +24,90 @@
             </mt-swipe>
         </div>
 
-        <div id="nav">
+        <div id="nav_box">
             <mt-swipe :auto="0">
                 <mt-swipe-item>
                     <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/swiper-1.jpg" alt>
-                        <p class="nav_p">冷饮</p>
+                        <img class="nav_img" src="../../static/image/icon_nav/navigation_market.png" alt>
+                        <p class="nav_p">超市</p>
                     </div>
                     <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/swiper-2.jpg" alt>
-                        <p class="nav_p">冷饮</p>
+                        <img class="nav_img" src="../../static/image/icon_nav/navigation_cosmetics.png" alt>
+                        <p class="nav_p">美妆馆</p>
                     </div>
                     <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/swiper-3.jpg" alt>
-                        <p class="nav_p">冷饮</p>
+                        <img class="nav_img" src="../../static/image/icon_nav/navigation_travel.png" alt>
+                        <p class="nav_p">旅行</p>
                     </div>
                     <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/swiper-4.jpg" alt>
-                        <p class="nav_p">冷饮</p>
+                        <img class="nav_img" src="../../static/image/icon_nav/navigation_vip.png" alt>
+                        <p class="nav_p">唯品会</p>
                     </div>
                     <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/swiper-5.jpg" alt>
-                        <p class="nav_p">冷饮</p>
+                        <img class="nav_img" src="../../static/image/icon_nav/navigation_reel.png" alt>
+                        <p class="nav_p">赚钱</p>
                     </div>
                     <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/swiper-1.jpg" alt>
-                        <p class="nav_p">冷饮</p>
+                        <img class="nav_img" src="../../static/image/icon_nav/navigation_topUp.png" alt>
+                        <p class="nav_p">充值</p>
                     </div>
                     <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/swiper-2.jpg" alt>
-                        <p class="nav_p">冷饮</p>
+                        <img class="nav_img" src="../../static/image/icon_nav/navigation_7.png" alt>
+                        <p class="nav_p">拼购</p>
                     </div>
                     <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/swiper-3.jpg" alt>
-                        <p class="nav_p">冷饮</p>
+                        <img class="nav_img" src="../../static/image/icon_nav/navigation_8.png" alt>
+                        <p class="nav_p">数码</p>
                     </div>
                     <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/swiper-4.jpg" alt>
-                        <p class="nav_p">冷饮</p>
+                        <img class="nav_img" src="../../static/image/icon_nav/navigation_9.png" alt>
+                        <p class="nav_p">生鲜</p>
                     </div>
                     <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/swiper-5.jpg" alt>
-                        <p class="nav_p">冷饮</p>
+                        <img class="nav_img" src="../../static/image/icon_nav/navigation_10.png" alt>
+                        <p class="nav_p">服装</p>
                     </div>
                 </mt-swipe-item>
                 <mt-swipe-item>
                     <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/swiper-1.jpg" alt>
-                        <p class="nav_p">冷饮</p>
+                        <img class="nav_img" src="../../static/image/icon_nav/navigation_11.png" alt>
+                        <p class="nav_p">快递</p>
                     </div>
                     <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/swiper-2.jpg" alt>
-                        <p class="nav_p">冷饮</p>
+                        <img class="nav_img" src="../../static/image/icon_nav/navigation_12.png" alt>
+                        <p class="nav_p">会员</p>
                     </div>
                     <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/swiper-3.jpg" alt>
-                        <p class="nav_p">冷饮</p>
+                        <img class="nav_img" src="../../static/image/icon_nav/navigation_13.png" alt>
+                        <p class="nav_p">领卷</p>
                     </div>
                     <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/swiper-4.jpg" alt>
-                        <p class="nav_p">冷饮</p>
+                        <img class="nav_img" src="../../static/image/icon_nav/navigation_14.png" alt>
+                        <p class="nav_p">全球购</p>
                     </div>
                     <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/swiper-5.jpg" alt>
-                        <p class="nav_p">冷饮</p>
+                        <img class="nav_img" src="../../static/image/icon_nav/navigation_15.png" alt>
+                        <p class="nav_p">拍购</p>
                     </div>
                     <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/swiper-1.jpg" alt>
-                        <p class="nav_p">冷饮</p>
+                        <img class="nav_img" src="../../static/image/icon_nav/navigation_16.png" alt>
+                        <p class="nav_p">沃尔玛</p>
                     </div>
                     <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/swiper-2.jpg" alt>
-                        <p class="nav_p">冷饮</p>
+                        <img class="nav_img" src="../../static/image/icon_nav/navigation_13.png" alt>
+                        <p class="nav_p">领卷</p>
                     </div>
                     <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/swiper-3.jpg" alt>
-                        <p class="nav_p">冷饮</p>
+                        <img class="nav_img" src="../../static/image/icon_nav/navigation_11.png" alt>
+                        <p class="nav_p">快递</p>
                     </div>
                     <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/swiper-4.jpg" alt>
-                        <p class="nav_p">冷饮</p>
+                        <img class="nav_img" src="../../static/image/icon_nav/navigation_12.png" alt>
+                        <p class="nav_p">会员</p>
                     </div>
                     <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/swiper-5.jpg" alt>
-                        <p class="nav_p">冷饮</p>
+                        <img class="nav_img" src="../../static/image/icon_nav/navigation_13.png" alt>
+                        <p class="nav_p">领卷</p>
                     </div>
                 </mt-swipe-item>
             </mt-swipe>
@@ -281,10 +281,11 @@ export default {
 .mint-search {
     height: 100%;
 }
-#nav {
+#nav_box {
     height: 155px;
     padding: 5px;
     background: url("../../static/image/nav-bg4.jpg") no-repeat left -265px;
+    background-color: #fff;
     background-size: 100% auto;
 }
 .nav_div {
@@ -298,7 +299,7 @@ export default {
     height: 35px;
     width: 35px;
     border-radius: 17.5px;
-    box-shadow: 0px 0px 0px 0px;
+    box-shadow: 1px 1px 8px #999;
 }
 .nav_p {
     color: #fff;
