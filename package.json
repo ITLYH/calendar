@@ -2,6 +2,7 @@
   "name": "my-calendar",
   "version": "0.1.0",
   "private": true,
+  "author": "liyh <786835033@qq.com>",
   "scripts": {
     "serve": "vue-cli-service serve --open",
     "build": "vue-cli-service build",
@@ -9,6 +10,8 @@
   },
   "dependencies": {
     "core-js": "^2.6.5",
+    "less": "^3.10.3",
+    "less-loader": "^5.0.0",
     "mint-ui": "^2.2.13",
     "vue": "^2.6.10",
     "vue-router": "^3.0.6",
@@ -21,6 +24,8 @@
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "less": "^3.10.3",
+    "less-loader": "^5.0.0",
     "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {

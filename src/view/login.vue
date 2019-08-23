@@ -39,7 +39,6 @@
 </template>
 <script>
 import { Field, Button, Popup } from "mint-ui";
-import { mapState, mapMutations } from "vuex";
 import tips from "../components/showTips";
 export default {
     name: "login",
@@ -69,6 +68,7 @@ export default {
         }
     },
     methods: {
+        // 登录
         loginIn() {
             if (
                 this.saveUsername.indexOf(this.username) != -1 &&

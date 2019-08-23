@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="day">
         <div class="header">
             <span id="year" v-html="year + '年'"></span>
         </div>
@@ -21,15 +21,13 @@
         </div>
     </div>
 </template>
-
 <script>
 let getYear = new Date().getFullYear();     // 获取年
 let getMouth = new Date().getMonth() + 1;   // 获取月
 let getDay = new Date().getDate();          // 获取日
 let getWeek = new Date().getDay();          // 获取今天是周几
-
 export default {
-    name: "calender",
+    name: "day",
     data() {
         const that = this;
         return {
@@ -109,11 +107,30 @@ export default {
         }
     },
     created(){
-        this.days(null,this.cc,getYear);
+        // this.days(null,this.cc,getYear);
     },
+    mounted(){
+        this.days(null,this.cc,getYear);
+    }
+
 };
 </script>
-
+<style>
+.day-div {
+    width: 47px;
+    height: 40px;
+    padding-top: 8px;
+    display: inline-block;
+    text-align: center;
+    line-height: 20px;
+    box-sizing: border-box;
+}
+.today {
+    background-color: #FFCC00;
+    border-bottom-right-radius: 27.5px;
+    border-bottom-left-radius: 27.5px;
+}
+</style>
 
 <style scoped>
 .header {
@@ -207,23 +224,5 @@ export default {
 }
 .Sat {
     color: #f10215;
-}
-
-.day-div {
-    width: 47px;
-    height: 40px;
-    /* border-top: 1px solid black; */
-    padding-top: 8px;
-    display: inline-block;
-    text-align: center;
-    line-height: 20px;
-    box-sizing: border-box;
-    /* flex-wrap: wrap; */
-}
-.today {
-    /* border-bottom: 1px solid #f10215; */
-    background-color: #FFCC00;
-    border-bottom-right-radius: 27.5px;
-    border-bottom-left-radius: 27.5px;
 }
 </style>

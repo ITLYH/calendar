@@ -1,117 +1,39 @@
 <template>
     <div id="main">
         <div class="search">
-            <mt-search v-model="value" style="background:blue;" cancel-text="取消" placeholder="搜索"></mt-search>
+            <mt-search v-model="value">
+                <mt-cell v-for="(item,index) in searchData" :key="index" :title="item.title" :value="item.value"></mt-cell>
+            </mt-search>
         </div>
 
+        <!-- 轮播图start -->
         <div class="swiper_bar">
-            <mt-swipe >
-                <mt-swipe-item>
-                    <img class="swiper" src="../../static/image/swiper-1.jpg" alt>
-                </mt-swipe-item>
-                <mt-swipe-item>
-                    <img class="swiper" src="../../static/image/swiper-2.jpg" alt>
-                </mt-swipe-item>
-                <mt-swipe-item>
-                    <img class="swiper" src="../../static/image/swiper-3.jpg" alt>
-                </mt-swipe-item>
-                <mt-swipe-item>
-                    <img class="swiper" src="../../static/image/swiper-4.jpg" alt>
-                </mt-swipe-item>
-                <mt-swipe-item>
-                    <img class="swiper" src="../../static/image/swiper-5.jpg" alt>
+            <mt-swipe>
+                <mt-swipe-item v-for="(item, index) in slidesPath" :key="index">
+                    <img class="swiper" :src="item.url" />
                 </mt-swipe-item>
             </mt-swipe>
         </div>
+        <!-- 轮播图end -->
 
+        <!-- 导航栏start -->
         <div id="nav_box">
             <mt-swipe :auto="0">
                 <mt-swipe-item>
-                    <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/icon_nav/navigation_market.png" alt>
-                        <p class="nav_p">超市</p>
-                    </div>
-                    <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/icon_nav/navigation_cosmetics.png" alt>
-                        <p class="nav_p">美妆馆</p>
-                    </div>
-                    <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/icon_nav/navigation_travel.png" alt>
-                        <p class="nav_p">旅行</p>
-                    </div>
-                    <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/icon_nav/navigation_vip.png" alt>
-                        <p class="nav_p">唯品会</p>
-                    </div>
-                    <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/icon_nav/navigation_reel.png" alt>
-                        <p class="nav_p">赚钱</p>
-                    </div>
-                    <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/icon_nav/navigation_topUp.png" alt>
-                        <p class="nav_p">充值</p>
-                    </div>
-                    <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/icon_nav/navigation_7.png" alt>
-                        <p class="nav_p">拼购</p>
-                    </div>
-                    <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/icon_nav/navigation_8.png" alt>
-                        <p class="nav_p">数码</p>
-                    </div>
-                    <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/icon_nav/navigation_9.png" alt>
-                        <p class="nav_p">生鲜</p>
-                    </div>
-                    <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/icon_nav/navigation_10.png" alt>
-                        <p class="nav_p">服装</p>
+                    <div class="nav_div" v-for="(item ,index) in navPath1" :key="index">
+                        <img class="nav_img" :src="item.url" />
+                        <p class="nav_p">{{item.name}}</p>
                     </div>
                 </mt-swipe-item>
                 <mt-swipe-item>
-                    <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/icon_nav/navigation_11.png" alt>
-                        <p class="nav_p">快递</p>
-                    </div>
-                    <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/icon_nav/navigation_12.png" alt>
-                        <p class="nav_p">会员</p>
-                    </div>
-                    <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/icon_nav/navigation_13.png" alt>
-                        <p class="nav_p">领卷</p>
-                    </div>
-                    <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/icon_nav/navigation_14.png" alt>
-                        <p class="nav_p">全球购</p>
-                    </div>
-                    <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/icon_nav/navigation_15.png" alt>
-                        <p class="nav_p">拍购</p>
-                    </div>
-                    <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/icon_nav/navigation_16.png" alt>
-                        <p class="nav_p">沃尔玛</p>
-                    </div>
-                    <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/icon_nav/navigation_13.png" alt>
-                        <p class="nav_p">领卷</p>
-                    </div>
-                    <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/icon_nav/navigation_11.png" alt>
-                        <p class="nav_p">快递</p>
-                    </div>
-                    <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/icon_nav/navigation_12.png" alt>
-                        <p class="nav_p">会员</p>
-                    </div>
-                    <div class="nav_div">
-                        <img class="nav_img" src="../../static/image/icon_nav/navigation_13.png" alt>
-                        <p class="nav_p">领卷</p>
+                    <div class="nav_div" v-for="(item ,index) in navPath2" :key="index">
+                        <img class="nav_img" :src="item.url" />
+                        <p class="nav_p">{{item.name}}</p>
                     </div>
                 </mt-swipe-item>
             </mt-swipe>
         </div>
+        <!-- 导航栏end -->
 
         <div class="cell_hot">
             <mt-cell title="热门信息" is-link>
@@ -132,10 +54,10 @@
                     <div class="tab_barList">
                         <div class="tab_barList_content">
                             <div class="content_left">
-                                <img class="user_img" src="../../static/image/user_1.jpg" alt>
+                                <img class="user_img" src="../../static/image/user_1.jpg" alt />
                                 <div class="user_msg">
                                     <span>X先生</span>
-                                    <br>
+                                    <br />
                                     <span>知名咨询博主</span>
                                 </div>
                             </div>
@@ -187,7 +109,7 @@
                 </mt-tab-container-item>
             </mt-tab-container>
         </div>
-        
+
         <mt-actionsheet :actions="actions" v-model="sheetVisible" closeOnClickModal="true"></mt-actionsheet>
         <share v-show="share"></share>
     </div>
@@ -203,11 +125,11 @@ import {
     SwipeItem
 } from "mint-ui";
 import share from "../components/share";
-
+import appData from "../common/appDataS";
 export default {
     name: "main",
-    components:{
-        share,
+    components: {
+        share
     },
     data() {
         const that = this;
@@ -220,6 +142,10 @@ export default {
             comments: 150, // 评论
             share: 66, // 分享
             sheetVisible: false,
+            searchData: appData.main.searchData,
+            slidesPath: appData.main.imgPath.slides,
+            navPath1: appData.main.imgPath.nav[0],
+            navPath2: appData.main.imgPath.nav[1],
             actions: [
                 { name: "不感兴趣", method: this.noInterest },
                 { name: "内容重复", method: this.contentRepeat },
@@ -251,12 +177,11 @@ export default {
             var iconGood = document.getElementById("icon-bad");
             iconGood.style.color = "red";
         },
-        shareOrder: function(){
+        shareOrder: function() {
             this.share = true;
-        },
+        }
     },
-    created() {
-    }
+    created() {}
 };
 </script>
 <style scoped>

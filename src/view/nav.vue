@@ -9,7 +9,7 @@
                 </router-link>
             </li>
             <li class="tab">
-                <router-link to="/calendar">
+                <router-link to="/day">
                     <p class="icon iconfont icon-calendar"></p>
                     <p>Calender</p>
                 </router-link>

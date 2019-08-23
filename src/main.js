@@ -5,6 +5,7 @@ import router from './router/index.js'
 import App from './App.vue'
 import store from './store/store.js'
 import MintUI from 'mint-ui'
+// import './config/rem'
 
 import 'mint-ui/lib/style.css'
 import '../static/css/mint.css'
