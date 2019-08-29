@@ -50,7 +50,10 @@ export default {
     width: 100%;
     height: 50px;
     line-height: 20px;
-    background-color: #ffcc00;
+    background: -webkit-linear-gradient(left, gold, pink); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, gold, pink); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, gold, pink); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, gold, pink); /* 标准的语法 */
     position: fixed;
     bottom: 0px;
 }

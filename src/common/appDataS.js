@@ -136,8 +136,155 @@ var appDataS = {
         }
     },
     calender: {},
-    lifeInfo: {},
-    personalCenter: {}
+    lifeInfo: {
+        videoInfo: [
+            {
+                user: "x先生",
+                describe: "知名咨询博主",
+                url: require("../../static/video/video_1.mp4"),
+                title: "黑手伸进香港，美国已不再隐藏？必遭中国惩罚！华春莹字字凌厉",
+                praise: 99,
+                tread: 5,
+                comments: 99,
+                share: 100,
+            },
+            {
+                user: "x先生",
+                describe: "知名美食博主",
+                url: require("../../static/image/swiper-3.jpg"),
+                title: "野外选块地，两兄弟徒手修建地下庇护所，居然还有游泳池野外选块地，两兄弟徒手修建地下庇护所，居然还有游泳池野外选块地，两兄弟徒手修建地下庇护所，居然还有游泳池",
+                praise: 52,
+                tread: 0,
+                comments: 99,
+                share: 100,
+            },
+            {
+                user: "x先生",
+                describe: "知名短视频博主",
+                url: require("../../static/video/video_1.mp4"),
+                title: "老虎搂着女主人，睡醒后立马变脸，镜头记录全过程",
+                praise: 99,
+                tread: 1,
+                comments: 99,
+                share: 100,
+            },
+            {
+                user: "x先生",
+                describe: "知名vlog博主",
+                url: require("../../static/video/video_1.mp4"),
+                title: "黑手伸进香港，美国已不再隐藏？必遭中国惩罚！华春莹字字凌厉",
+                praise: 59,
+                tread: 0,
+                comments: 45,
+                share: 1022,
+            },
+            {
+                user: "x先生",
+                describe: "知名游戏博主",
+                url: require("../../static/image/swiper-1.jpg"),
+                title: "黑手伸进香港，美国已不再隐藏？必遭中国惩罚！华春莹字字凌厉",
+                praise: 9,
+                tread: 1,
+                comments: 99,
+                share: 1000,
+            },
+            {
+                user: "x先生",
+                describe: "知名游戏博主",
+                url: require("../../static/image/user_1.jpg"),
+                title: "黑手伸进香港，美国已不再隐藏？必遭中国惩罚！华春莹字字凌厉",
+                praise: 15,
+                tread: 1,
+                comments: 99,
+                share: 50,
+            }
+        ],
+        imgInfo: [
+            {
+                url: "http://fuss10.elemecdn.com/b/18/0678e57cb1b226c04888e7f244c20jpeg.jpeg",
+                title: "沙拉",
+                text: "营养和美味的代名词"
+            }, {
+                url: "http://fuss10.elemecdn.com/3/1e/42634e29812e6594c98a89e922c60jpeg.jpeg",
+                title: "营养餐点",
+                text: "营养和美味的代名词"
+            }, {
+                url: "http://fuss10.elemecdn.com/1/c5/95c37272d3e554317dcec1e17a9f5jpeg.jpeg",
+                title: "寿司",
+                text: "营养和美味的代名词"
+            }, {
+                url: "http://fuss10.elemecdn.com/b/df/b630636b444346e38cef6c59f6457jpeg.jpeg",
+                title: "薄荷",
+                text: "清新口气更清新你"
+            }, {
+                url: "http://fuss10.elemecdn.com/7/a5/596ab03934612236f807b92906fd8jpeg.jpeg",
+                title: "薄荷",
+                text: "清新口气更清新你"
+            }, {
+                url: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1566880390745&di=764a401da1176d4e2eb170c3c82054b5&imgtype=0&src=http%3A%2F%2Fwx3.sinaimg.cn%2Flarge%2F006dKyvTgy1frvg2dhy69j30rs0fmx49.jpg",
+                title: "阳朔",
+                text: "全国不得不去的城镇之一"
+            }, {
+                url: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1566880632278&di=4997ce34536d3619e90fa50ab08477f0&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fitbbs%2F1308%2F26%2Fc4%2F24912547_1377501622802_mthumb.jpg",
+                title: "稻城.亚丁",
+                text: "全国不得不去的城镇之一"
+            }, {
+                url: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1566880828178&di=cb5d96e6ae307ce30a1025161b04a789&imgtype=0&src=http%3A%2F%2Fforum.xitek.com%2F200506%2F116%2F11641%2F11641_1120036164.jpg",
+                title: "香格里拉",
+                text: "一个让人心醉的城镇"
+            }
+        ]
+    },
+    personalCenter: {},
+    comments: {
+        comments_list: [
+            {
+                id: "1",
+                comments_user: "悔创阿里杰克马",
+                comments_user_img: require("../../static/image/swiper-1.jpg"),
+                comments_time: "8-20",
+                comments_good: "5558",
+                comments_reply: "1.4万",
+                comments_detail: "二楼快说卧槽",
+            },
+            {
+                id: "2",
+                comments_user: "一无所有王健林",
+                comments_user_img: require("../../static/image/swiper-2.jpg"),
+                comments_time: "8-26",
+                comments_good: "3357",
+                comments_reply: "1200",
+                comments_detail: "卧槽",
+            },
+            {
+                id: "3",
+                comments_user: "普通家庭马化腾",
+                comments_user_img: require("../../static/image/swiper-3.jpg"),
+                comments_time: "8-27",
+                comments_good: "668",
+                comments_reply: "110",
+                comments_detail: "我擦，老虎搂着女主人，睡醒后立马变脸，镜头记录全过程",
+            },
+            {
+                id: "4",
+                comments_user: "北大还行撒贝宁",
+                comments_user_img: require("../../static/image/swiper-4.jpg"),
+                comments_time: "8-26",
+                comments_good: "108",
+                comments_reply: "120",
+                comments_detail: "老虎搂着女主人，睡醒后立马变脸，镜头记录全过程",
+            },
+            {
+                id: "5",
+                comments_user: "多财多亿的马某某",
+                comments_user_img: require("../../static/image/swiper-1.jpg"),
+                comments_time: "8-28",
+                comments_good: "50",
+                comments_reply: "12",
+                comments_detail: "老虎搂着女主人，睡醒后立马变脸，镜头记录全过程",
+            }
+        ]
+    }
 }
 
 export default appDataS

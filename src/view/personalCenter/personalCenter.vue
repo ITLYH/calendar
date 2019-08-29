@@ -5,9 +5,11 @@
         </div>
         <main class="main">
             <div class="main_user_img">
-                <img class="user_img" src="../../static/image/user_1.jpg" alt />
-                <p class="user_name">{{this.$store.userName}}</p>
-                <div class="user_set"></div>
+                <img class="user_img" src="../../../static/image/user_1.jpg" alt />
+                <p class="user_name">{{this.$store.state.userName}}</p>
+                <div class="user_set">
+                    <div>设 置</div>
+                </div>
                 <div>
                     <div class="user_count">
                         获赞：
@@ -26,7 +28,6 @@
                         <span>{{integral}}</span>
                     </div>
                 </div>
-                
             </div>
             <div class="userIntegral">
                 <ul
@@ -41,7 +42,7 @@
                             <span class="tips">#旅游</span>
                         </div>
                         <div class="userIntegral_tip">
-                            <img class="userIntegralImg" src="../../static/image/yangshuo.jpg" alt />
+                            <img class="userIntegralImg" src="../../../static/image/yangshuo.jpg" alt />
                             <div class="userIntegral_div">
                                 <p>阳朔县拥有漓江景区、《印象·刘三姐》、碧莲峰山水园、聚龙潭、蝴蝶泉、刘三姐水上公园、鉴山寺等营业景点15处。2018年11月，荣登“2018中国幸福百县榜”。</p>
                             </div>
@@ -53,7 +54,7 @@
                             <span class="tips">#旅游</span>
                         </div>
                         <div class="userIntegral_tip">
-                            <img class="userIntegralImg" src="../../static/image/yangshuo.jpg" alt />
+                            <img class="userIntegralImg" src="../../../static/image/yangshuo.jpg" alt />
                             <div class="userIntegral_div">
                                 <p>阳朔县拥有漓江景区、《印象·刘三姐》、碧莲峰山水园、聚龙潭、蝴蝶泉、刘三姐水上公园、鉴山寺等营业景点15处。2018年11月，荣登“2018中国幸福百县榜”。</p>
                             </div>
@@ -65,7 +66,7 @@
                             <span class="tips">#旅游</span>
                         </div>
                         <div class="userIntegral_tip">
-                            <img class="userIntegralImg" src="../../static/image/yangshuo.jpg" alt />
+                            <img class="userIntegralImg" src="../../../static/image/yangshuo.jpg" alt />
                             <div class="userIntegral_div">
                                 <p>阳朔县拥有漓江景区、《印象·刘三姐》、碧莲峰山水园、聚龙潭、蝴蝶泉、刘三姐水上公园、鉴山寺等营业景点15处。2018年11月，荣登“2018中国幸福百县榜”。</p>
                             </div>
@@ -77,7 +78,7 @@
                             <span class="tips">#旅游</span>
                         </div>
                         <div class="userIntegral_tip">
-                            <img class="userIntegralImg" src="../../static/image/yangshuo.jpg" alt />
+                            <img class="userIntegralImg" src="../../../static/image/yangshuo.jpg" alt />
                             <div class="userIntegral_div">
                                 <p>阳朔县拥有漓江景区、《印象·刘三姐》、碧莲峰山水园、聚龙潭、蝴蝶泉、刘三姐水上公园、鉴山寺等营业景点15处。2018年11月，荣登“2018中国幸福百县榜”。</p>
                             </div>
@@ -89,7 +90,7 @@
                             <span class="tips">#旅游</span>
                         </div>
                         <div class="userIntegral_tip">
-                            <img class="userIntegralImg" src="../../static/image/yangshuo.jpg" alt />
+                            <img class="userIntegralImg" src="../../../static/image/yangshuo.jpg" alt />
                             <div class="userIntegral_div">
                                 <p>阳朔县拥有漓江景区、《印象·刘三姐》、碧莲峰山水园、聚龙潭、蝴蝶泉、刘三姐水上公园、鉴山寺等营业景点15处。2018年11月，荣登“2018中国幸福百县榜”。</p>
                             </div>
@@ -101,7 +102,7 @@
                             <span class="tips">#旅游</span>
                         </div>
                         <div class="userIntegral_tip">
-                            <img class="userIntegralImg" src="../../static/image/yangshuo.jpg" alt />
+                            <img class="userIntegralImg" src="../../../static/image/yangshuo.jpg" alt />
                             <div class="userIntegral_div">
                                 <p>阳朔县拥有漓江景区、《印象·刘三姐》、碧莲峰山水园、聚龙潭、蝴蝶泉、刘三姐水上公园、鉴山寺等营业景点15处。2018年11月，荣登“2018中国幸福百县榜”。</p>
                             </div>
@@ -113,7 +114,7 @@
                             <span class="tips">#旅游</span>
                         </div>
                         <div class="userIntegral_tip">
-                            <img class="userIntegralImg" src="../../static/image/yangshuo.jpg" alt />
+                            <img class="userIntegralImg" src="../../../static/image/yangshuo.jpg" alt />
                             <div class="userIntegral_div">
                                 <p>阳朔县拥有漓江景区、《印象·刘三姐》、碧莲峰山水园、聚龙潭、蝴蝶泉、刘三姐水上公园、鉴山寺等营业景点15处。2018年11月，荣登“2018中国幸福百县榜”。</p>
                             </div>
@@ -125,7 +126,7 @@
                             <span class="tips">#旅游</span>
                         </div>
                         <div class="userIntegral_tip">
-                            <img class="userIntegralImg" src="../../static/image/yangshuo.jpg" alt />
+                            <img class="userIntegralImg" src="../../../static/image/yangshuo.jpg" alt />
                             <div class="userIntegral_div">
                                 <p>阳朔县拥有漓江景区、《印象·刘三姐》、碧莲峰山水园、聚龙潭、蝴蝶泉、刘三姐水上公园、鉴山寺等营业景点15处。2018年11月，荣登“2018中国幸福百县榜”。</p>
                             </div>
@@ -146,7 +147,7 @@ export default {
             Focus: "105",
             Fans: "10万",
             integral: "90万",
-            userIntegralImg: "../../static/image/yangshuo.jpg",
+            userIntegralImg: "../../../static/image/yangshuo.jpg",
             list: [],
             loading: false
         };
@@ -185,8 +186,11 @@ export default {
     height: 150px;
     width: 100%;
     padding-top: 75px;
-    line-height: 30px;
-    background-color: #ffcc00;
+    line-height: 20px;
+    background: -webkit-linear-gradient(left, gold, pink); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, gold, pink); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, gold, pink); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, gold, pink); /* 标准的语法 */
 }
 .user_img {
     height: 75px;
@@ -263,8 +267,19 @@ export default {
 }
 .user_set {
     position: relative;
-    width: 80px;
+    width: 100%;
     height: 25px;
-    background-color: rgba(255, 100, 97, 1);
+}
+.user_set div {
+    float: right;
+    height: 25px;
+    width: 65px;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    background-color: rgba(255, 100, 97, .7);
+    color: #fff;
+    font-size: 12px;
+    line-height: 25px;
+    text-align: center;
 }
 </style>

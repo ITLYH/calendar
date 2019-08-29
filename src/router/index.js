@@ -1,12 +1,13 @@
 
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import main from '../view/main.vue'
-import personalCenter from '../view/personalCenter.vue'
-import lifeInfo from '../view/lifeInfo.vue'
+import main from '../view/main/main.vue'
+import personalCenter from '../view/personalCenter/personalCenter.vue'
+import lifeInfo from '../view/lifeInfo/lifeInfo.vue'
 import nav from '../view/nav.vue'
 import login from '../view/login.vue'
 import day from '../view/day.vue'
+import comments from '../components/comments.vue'
 
 Vue.use(VueRouter);
 
@@ -24,6 +25,7 @@ const router = new VueRouter({
                 { path: '/lifeInfo', name: 'lifeInfo', component: lifeInfo },
             ],
         },
+        { path: '/comments', name: 'comments', component: comments },
     ]
 })
 

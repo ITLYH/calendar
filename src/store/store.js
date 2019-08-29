@@ -5,6 +5,7 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
     state: {
+        userName: localStorage.getItem('username'),
         userInfo: null, //用户信息
         isLogin: false,   //是否登录
         servicesPath: 'http://localhost:8080/',

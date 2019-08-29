@@ -57,15 +57,9 @@ export default {
     },
     created() {
         document.body.style.paddingBottom = "0px";
+        document.addEventListener('keydown', this.keyDown);
     },
     computed: {
-        keyDown(e) {
-            let ev = window.event || e;
-            if (ev.keyCode == 13) {
-                //你要执行的方法
-                this.loginIn();
-            }
-        }
     },
     methods: {
         // 登录
@@ -74,7 +68,7 @@ export default {
                 this.saveUsername.indexOf(this.username) != -1 &&
                 this.savePsw == this.password
             ) {
-                const token = this.randomCoding();
+                const token = this.randomCoding().toLowerCase();
 
                 localStorage.setItem("username", this.username);
                 localStorage.setItem("token", token);
@@ -101,6 +95,13 @@ export default {
                 result.push(String.fromCharCode(65 + ranNum));
             }
             return result.join("");
+        },
+        /*回车事件*/
+        keyDown(e) {
+            var ev = window.event || e;
+            if (ev.keyCode == 13) {
+                this.loginIn();
+            }
         }
     },
     watch: {

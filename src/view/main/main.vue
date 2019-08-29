@@ -54,7 +54,7 @@
                     <div class="tab_barList">
                         <div class="tab_barList_content">
                             <div class="content_left">
-                                <img class="user_img" src="../../static/image/user_1.jpg" alt />
+                                <img class="user_img" src="../../../static/image/user_1.jpg" alt />
                                 <div class="user_msg">
                                     <span>X先生</span>
                                     <br />
@@ -74,8 +74,8 @@
                                 width="100%"
                                 height="215"
                                 class="tab_barList_video"
-                                src="../../static/video/video_1.mp4"
-                                poster="../../static/video/video_1_gif.gif"
+                                src="../../../static/video/video_1.mp4"
+                                poster="../../../static/video/video_1_gif.gif"
                                 controls
                             ></video>
                         </div>
@@ -124,8 +124,8 @@ import {
     Swipe,
     SwipeItem
 } from "mint-ui";
-import share from "../components/share";
-import appData from "../common/appDataS";
+import share from "../../components/share";
+import appData from "../../common/appDataS";
 export default {
     name: "main",
     components: {
@@ -191,7 +191,7 @@ export default {
 .swiper_bar {
     height: 125px;
     padding: 13px 0px 8px 0px;
-    background: url("../../static/image/nav-bg4.jpg") no-repeat left -100px;
+    background: url("../../../static/image/nav-bg4.jpg") no-repeat left -100px;
     background-size: 100% auto;
 }
 .swiper {
@@ -209,7 +209,7 @@ export default {
 #nav_box {
     height: 155px;
     padding: 5px;
-    background: url("../../static/image/nav-bg4.jpg") no-repeat left -265px;
+    background: url("../../../static/image/nav-bg4.jpg") no-repeat left -265px;
     background-color: #fff;
     background-size: 100% auto;
 }
