@@ -8,6 +8,7 @@ import nav from '../view/nav.vue'
 import login from '../view/login.vue'
 import day from '../view/day.vue'
 import comments from '../components/comments.vue'
+import video from '../components/video.vue'
 
 Vue.use(VueRouter);
 
@@ -26,6 +27,7 @@ const router = new VueRouter({
             ],
         },
         { path: '/comments', name: 'comments', component: comments },
+        { path: '/video', name: 'video', component: video },
     ]
 })
 

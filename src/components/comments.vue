@@ -1,21 +1,23 @@
 <template>
     <div id="comments">
-        <div class="tab_barList_video_box">
+        <div id="comments_box">
+            <div class="tab_barList_video_box">
 
-            <video width="auto" height="215" class="tab_barList_video" src="../../static/video/video_1.mp4" poster controls></video>
-            <!-- <img :src="item.url" alt height="215" width="auto" v-else /> -->
-        </div>
-        <div class="tab_barList_content">
-            <div class="content_left">
-                <img class="user_img" src="../../static/image/user_1.jpg" alt />
-                <div class="user_msg">
-                    <span>X先生</span>
-                    <br />
-                    <span>知名咨询博主</span>
-                </div>
+                <video width="auto" height="215" class="tab_barList_video" src="../../static/video/video_1.mp4" poster controls></video>
+                <!-- <img :src="item.url" alt height="215" width="auto" v-else /> -->
             </div>
-            <div class="content_right" @click="GuanZuFun">
-                <span class="guanZu" :style="{'color':isGuanZu?'red':'#fff'}" v-text="isGuanZu?'已关注':'关注'"></span>
+            <div class="tab_barList_content">
+                <div class="content_left">
+                    <img class="user_img" src="../../static/image/user_1.jpg" alt />
+                    <div class="user_msg">
+                        <span>X先生</span>
+                        <br />
+                        <span>知名咨询博主</span>
+                    </div>
+                </div>
+                <div class="content_right" @click="GuanZuFun">
+                    <span class="guanZu" :style="{'color':isGuanZu?'red':'#fff'}" v-text="isGuanZu?'已关注':'关注'"></span>
+                </div>
             </div>
         </div>
         <p class="log_title">野外选块地，两兄弟徒手修建地下庇护所，居然还有游泳池野外选块地，两兄弟徒手修建地下庇护所，居然还有游泳池野外选块地，两兄弟徒手修建地下庇护所，居然还有游泳池</p>
@@ -23,12 +25,12 @@
             <p><span class="iconfont icon-discount"></span> 吃鸡小分队</p>
             <div>
                 <div><span>10.2万次观看</span></div>
-                <div><span>998万人关注</span><i class="iconfont icon-attachment"></i></div>
+                <div><span>998人关注</span><i class="iconfont icon-attachment"></i></div>
             </div>
         </div>
 
         <!-- 评论列表 -->
-        <div class="comments_list" id="">
+        <div class="comments_list" id="" ref="comments_top">
             <div class="comments_listS" v-for="(item,index) in commentsList" :key="index">
                 <img :src="item.comments_user_img">
                 <div>
@@ -55,17 +57,17 @@
                     <span>1.5万 </span>
                     <!-- <span>1.5万 </span><i :class="item.flag?'iconfont icon-good-filling':'iconfont icon-good'" :style="{'color':item.flag?'red':'black'}"></i> -->
                 </span>
-                <span>
+                <span @click="toTop">
                     <p class="iconfont icon-comments"></p>
-                    <span>100 </span>
+                    <span>100</span>
                 </span>
                 <span>
                     <p class="iconfont icon-favorite"></p>
-                    <span>收藏 </span>
+                    <span>收藏</span>
                 </span>
                 <span>
                     <p class="iconfont icon-skip"></p>
-                    <span>分享 </span>
+                    <span>分享</span>
                 </span>
             </div>
         </div>
@@ -117,6 +119,14 @@ export default {
             // this.commentsList[index].comments_good = num;
             // this.commentsList[index].flag = this.commentsList[index].flag?false:true;
         },
+        toTop: function () {
+            let h = this.$refs.comments_top.offsetTop-260;
+            if (!document.documentElement.scrollTop) {
+                document.body.scrollTop = h;
+            } else {
+                document.documentElement.scrollTop = h;
+            }
+        },
     },
     created() {
     }
@@ -125,6 +135,9 @@ export default {
 
 
 <style scoped>
+#comments{
+    padding-top: 260px;
+}
 .tab_barList_content {
     padding: 5px;
     height: 30px;
@@ -158,6 +171,11 @@ export default {
 }
 .user_msg > span:last-child {
     color: #ccc;
+}
+#comments_box{
+    position: fixed;
+    top: 0px;
+    background-color: #fff;
 }
 .log_title {
     text-align: left;
@@ -310,7 +328,7 @@ export default {
     width: 100%;
     position: fixed;
     bottom: 0px;
-    padding: 7px 0px 0px 7px; 
+    padding: 7px 0px 0px 7px;
     border-top: 1px solid #ccc;
     background-color: #fff;
 }
@@ -334,9 +352,9 @@ export default {
     vertical-align: middle;
     font-size: 12px;
 }
-.user_reply > div:last-child > span{
+.user_reply > div:last-child > span {
     display: inline-block;
-    padding: 0 13px
+    padding: 0 13px;
 }
 .user_reply > div:last-child i {
     font-size: 12px;

@@ -6,6 +6,7 @@ import App from './App.vue'
 import store from './store/store.js'
 import MintUI from 'mint-ui'
 // import './config/rem'
+import Xgplayer from 'xgplayer-vue';
 
 import 'mint-ui/lib/style.css'
 import '../static/css/mint.css'
@@ -14,6 +15,7 @@ Vue.config.productionTip = false
 
 Vue.use(VueRouter)
 Vue.use(MintUI)
+Vue.use(Xgplayer)
 Vue.use(Vuex)
 
 router.beforeEach((to, from, next) => {
