@@ -24,6 +24,7 @@ export default {
                 autoplay: false, //如果true,浏览器准备好时开始回放。
                 url: require('../../static/video/video_1.mp4'),
                 // poster: require("../../static/video/video_1_gif.gif"), //你的封面地址
+                'x5-video-player-fullscreen': false, // 微信的全屏播放
             },
             Player: null
         };
