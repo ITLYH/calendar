@@ -1,53 +1,48 @@
 <template>
     <div id="video_tmp">
-        <div>
-            <Xgplayer :config="config" @player="Player = $event" />
+        <div id="box">
+            <div class="top_back" v-show="flag">
+                <span class="back iconfont icon-back" @click="$router.go(-1)"></span>
+            </div>
+            <video width="100%" height="215" id="tab_barList_video" x5-playsinline="" playsinline="" webkit-playsinline="" class="tab_barList_video" :src="urls" poster preload controls></video>
         </div>
     </div>
 </template>
 <script>
-import Xgplayer from 'xgplayer-vue';
 
 export default {
     data() {
         return {
-            config: {
-                id: 'vs',
-                // fluid: true,
-                // width: 'auto',
-                height: '213px',
-                volume: 0.3,
-                width: window.innerWidth,
-                // pip: true,   // 画中画
-                lang: 'zh-cn',
-                videoInit: true, // 是否显示初始帧数
-                // download: true, //设置download控件显示
-                // playbackRate: [0.7, 1.0, 1.5, 2.0], //播放速度
-                autoplay: false, //如果true,浏览器准备好时开始回放。
-                url: require('../../static/video/video_1.mp4'),
-                // poster: require("../../static/video/video_1_gif.gif"), //你的封面地址
-                // 'x5-video-player-fullscreen': false, // 微信的全屏播放
-                "playsinline": true,
-                "whitelist": [
-                    ""
-                ]
-            },
-            Player: null
+            isShow: false,
         };
     },
-    components: {
-        Xgplayer
-    },
-    props: ["src"],
+    props: ["urls", "flag"],
     watch: {
-
     },
     methods: {
+
     },
     created() {
+
     },
     mounted() {
-
+        let v = document.getElementById('tab_barList_video');
+        v.addEventListener('play', function () {//播放开始执行的函数
+            console.log(v.controls);
+            if (v.controls == 'false') {
+                console.log('1');
+                this.flag = false;
+            } else {
+                console.log('2');
+                this.flag = true;
+            }
+        });
+        v.addEventListener('pause', function () {//播放开始执行的函数
+            console.log('pause');
+            this.flag = true;
+        });
+    },
+    watch: {
     }
 };
 </script>
@@ -55,5 +50,24 @@ export default {
 <style scoped>
 #video_tmp {
     background-color: #fff;
+}
+#box {
+    position: relative;
+}
+.top_back {
+    width: 100%;
+    height: 30px;
+    position: absolute;
+    /* background: transparent; */
+    background: #000;
+    /* background-image: linear-gradient(to bottom, #676866, transparent); */
+    line-height: 30px;
+    text-align: left;
+    z-index: 999;
+}
+.back {
+    color: #fff;
+    font-size: 25px;
+    opacity: 1;
 }
 </style>

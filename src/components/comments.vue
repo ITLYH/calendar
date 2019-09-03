@@ -2,17 +2,21 @@
     <div id="comments">
         <div id="comments_box">
             <div class="tab_barList_video_box">
-
-                <video width="auto" height="215" class="tab_barList_video" src="../../static/video/video_1.mp4" poster controls></video>
-                <!-- <img :src="item.url" alt height="215" width="auto" v-else /> -->
+                <div class="img_tiezi" v-show="this.items.url.split('.')[this.items.url.split('.').length-1] == 'jpg'">
+                    <span class="back iconfont icon-back" @click="$router.go(-1)"></span>
+                    <span>帖子详情</span>
+                    <span class="iconfont icon-share"></span>
+                </div>
+                <img :src="this.items.url" alt height="215" width="auto" v-if="this.items.url.split('.')[this.items.url.split('.').length-1] == 'jpg'" />
+                <com-video :urls="this.items.url" :flag="this.flag" v-else></com-video>
             </div>
             <div class="tab_barList_content">
                 <div class="content_left">
-                    <img class="user_img" src="../../static/image/user_1.jpg" alt />
+                    <img class="user_img" :src="this.items.userImg" alt />
                     <div class="user_msg">
-                        <span>X先生</span>
+                        <span>{{this.items.user}}</span>
                         <br />
-                        <span>知名咨询博主</span>
+                        <span>{{this.items.describe}}</span>
                     </div>
                 </div>
                 <div class="content_right" @click="GuanZuFun">
@@ -20,12 +24,12 @@
                 </div>
             </div>
         </div>
-        <p class="log_title">野外选块地，两兄弟徒手修建地下庇护所，居然还有游泳池野外选块地，两兄弟徒手修建地下庇护所，居然还有游泳池野外选块地，两兄弟徒手修建地下庇护所，居然还有游泳池</p>
+        <p class="log_title">{{this.items.title}}</p>
         <div class="statistical_log">
             <p><span class="iconfont icon-discount"></span> 吃鸡小分队</p>
             <div>
-                <div><span>10.2万次观看</span></div>
-                <div><span>998人关注</span><i class="iconfont icon-attachment"></i></div>
+                <div><span>{{this.items.look}}次观看</span></div>
+                <div><span>{{this.items.attention}}人关注</span><i class="iconfont icon-attachment"></i></div>
             </div>
         </div>
 
@@ -49,7 +53,7 @@
         <!-- 回复 -->
         <div class="user_reply">
             <div>
-                <input type="text" placeholder="说点什么...">
+                <input id="user_reply_text" type="text" placeholder="说点什么...">
             </div>
             <div>
                 <span>
@@ -76,21 +80,28 @@
 <script>
 import appData from "../common/appDataS";
 import { Toast, MessageBox } from 'mint-ui';
+import video from "./video";
 export default {
     data() {
         return {
             isGuanZu: false,
             good: 0,
             code: '',
+            items: JSON.parse(localStorage.getItem('item_detail')),
             commentsList: appData.comments.comments_list,
+            flag: false,
+            // urls: require('../../static/video/video_1.mp4'),
         };
     },
     props: [],
+    components: {
+        "com-video": video
+    },
     watch: {
 
     },
     methods: {
-        GuanZuFun: function () {
+        GuanZuFun() {
             if (this.isGuanZu == false) {
                 this.isGuanZu = true;
                 Toast({
@@ -107,7 +118,7 @@ export default {
                 });
             }
         },
-        giveLike: function (num, index, e) {
+        giveLike(num, index, e) {
             // 方法一
             var iconGood = e.currentTarget.lastElementChild;
             iconGood.style.color == "red" ? num-- : num++;
@@ -119,24 +130,61 @@ export default {
             // this.commentsList[index].comments_good = num;
             // this.commentsList[index].flag = this.commentsList[index].flag?false:true;
         },
-        toTop: function () {
-            let h = this.$refs.comments_top.offsetTop-260;
-            if (!document.documentElement.scrollTop) {
-                document.body.scrollTop = h;
+        toTop() {
+            if (this.items.url.split('.')[this.items.url.split('.').length - 1] == "mp4") {
+                let h = this.$refs.comments_top.offsetTop - 260;
+                if (!document.documentElement.scrollTop) {
+                    document.body.scrollTop = h;
+                } else {
+                    document.documentElement.scrollTop = h;
+                }
             } else {
-                document.documentElement.scrollTop = h;
+                let h = this.$refs.comments_top.offsetTop - 290;
+                if (!document.documentElement.scrollTop) {
+                    document.body.scrollTop = h;
+                } else {
+                    document.documentElement.scrollTop = h;
+                }
+            }
+
+        },
+        rout() {
+            if (this.$route.path === "/comments") {
+                this.flag = true;
             }
         },
+        checkFo() {
+            if (document.addEventListener) {
+                document.getElementById('user_reply_text').addEventListener('blur', function () {
+                    document.getElementsByClassName('user_reply')[0].style.bottom = "0px";
+                })
+            } else {
+                document.getElementById('user_reply_text').attachEvent('blur', function () {
+                    document.getElementsByClassName('user_reply')[0].style.bottom = "0px";
+                })
+            }
+
+        }
     },
     created() {
-    }
+        this.rout();
+    },
+    mounted() {
+        if (this.items.url.split('.')[this.items.url.split('.').length - 1] == "mp4") {
+            document.getElementById('comments').style.paddingTop = '260px';
+        }
+    },
+    watch: {
+        "$route": "rout"
+    },
+
 };
 </script>
 
 
 <style scoped>
-#comments{
-    padding-top: 260px;
+#comments {
+    padding-top: 290px;
 }
 .tab_barList_content {
     padding: 5px;
@@ -172,9 +220,11 @@ export default {
 .user_msg > span:last-child {
     color: #ccc;
 }
-#comments_box{
+#comments_box {
     position: fixed;
     top: 0px;
+    left: 0px;
+    right: 0px;
     background-color: #fff;
 }
 .log_title {
@@ -358,5 +408,29 @@ export default {
 }
 .user_reply > div:last-child i {
     font-size: 12px;
+}
+.img_tiezi {
+    height: 30px;
+    width: 100%;
+    text-align: center;
+    line-height: 30px;
+}
+.img_tiezi > span:nth-child(2) {
+    float: left;
+    margin-left: 50%;
+    transform: translate(-98%);
+}
+.back {
+    height: 30px;
+    width: 30px;
+    float: left;
+    font-size: 20px;
+}
+.icon-share {
+    float: right;
+    height: 30px;
+    width: 30px;
+    font-size: 15px;
+    padding-right: 5px;
 }
 </style>

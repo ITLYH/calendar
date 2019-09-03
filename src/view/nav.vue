@@ -9,7 +9,7 @@
                 </router-link>
             </li>
             <li class="tab">
-                <router-link to="/video">
+                <router-link to="/day">
                     <p class="icon iconfont icon-calendar"></p>
                     <p>Calender</p>
                 </router-link>
@@ -40,7 +40,17 @@ export default {
         document.body.style.paddingBottom = "50px";
     },
     methods: {
-    }
+    },
+    watch: {
+        $route(to, from) {
+            console.log(to.path);
+            if (to.path === '/main' || to.path === '/lifeInfo') {
+                this.flag = false
+            } else {
+                this.flag = true;
+            }
+        }
+    },
 };
 </script>>
 

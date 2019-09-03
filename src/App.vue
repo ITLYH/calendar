@@ -17,7 +17,16 @@ export default {
     },
     components:{
         "login-view" : login,
-    }
+    },
+    watch: {
+        $route(to, from) {
+            // if (to.path === '/main' || to.path === '/lifeInfo') {
+            //     this.$store.commit("isFlag", false);
+            // } else {
+            //     this.$store.commit("isFlag", true);
+            // }
+        }
+    },
 };
 </script>
 

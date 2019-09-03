@@ -19,47 +19,50 @@
                 </mt-tab-container-item>
 
                 <!--  -->
-                <mt-tab-container-item id="2">
-                    <div class="tab_barList" v-for="(item,index) in videoList" :key="index">
-                        <div class="tab_barList_content">
-                            <div class="content_left">
-                                <img class="user_img" src="../../../static/image/user_1.jpg" alt />
-                                <div class="user_msg">
-                                    <span>{{item.user}}</span>
-                                    <br />
-                                    <span>{{item.describe}}</span>
+                <mt-tab-container-item id="2" ref="top_2">
+                    <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" ref="loadmore">
+                        <div class="tab_barList" v-for="(item,index) in videoList" :key="index">
+                            <div class="tab_barList_content">
+                                <div class="content_left">
+                                    <img class="user_img" :src="item.userImg" alt />
+                                    <div class="user_msg">
+                                        <span>{{item.user}}</span>
+                                        <br />
+                                        <span>{{item.describe}}</span>
+                                    </div>
+                                </div>
+                                <div class="content_right">
+                                    <label @click="actionSheet" id="icon-moreunfold" class="mint-button-text iconfont icon-moreunfold">&nbsp;&nbsp;</label>
                                 </div>
                             </div>
-                            <div class="content_right">
-                                <label @click="actionSheet" id="icon-moreunfold" class="mint-button-text iconfont icon-moreunfold">&nbsp;&nbsp;</label>
-                            </div>
-                        </div>
 
-                        <div class="tab_barList_video_box">
-                            <p class="log_title">{{item.title}}</p>
-                            <video width="100%" height="215" class="tab_barList_video" :src="item.url" poster controls v-if="item.url.split('.')[item.url.split('.').length-1] !== 'jpg'"></video>
-                            <img :src="item.url" alt height="215" width="auto" v-else />
-                        </div>
+                            <div class="tab_barList_video_box">
+                                <p class="log_title">{{item.title}}</p>
+                                <com-video :urls="item.url" v-if="item.url.split('.')[item.url.split('.').length-1] !== 'jpg'"></com-video>
+                                <img :src="item.url" alt height="215" width="auto" v-else />
+                            </div>
 
-                        <div class="tab_barList_content">
-                            <div class="content_footer">
-                                <div class="tab_content" @click="praiseCount($event)">
-                                    <i class="iconfont icon-good">&nbsp;{{item.praise}}</i>
-                                </div>
-                                <div class="tab_content" @click="treadCount($event)">
-                                    <i class="iconfont icon-bad">&nbsp;{{item.tread}}</i>
-                                </div>
-                                <div class="tab_content" @click="goComments">
-                                    <i class="iconfont icon-comments"></i>
-                                    <span>&nbsp;{{item.comments}}万</span>&nbsp;&nbsp;
-                                </div>
-                                <div class="tab_content" @click="shareOrder($event)">
-                                    <i class="iconfont icon-skip"></i>
-                                    <span>&nbsp;{{item.share}}万</span>&nbsp;&nbsp;
+                            <div class="tab_barList_content">
+                                <div class="content_footer">
+                                    <div class="tab_content" @click="praiseCount($event)">
+                                        <i class="iconfont icon-good">&nbsp;{{item.praise}}</i>
+                                    </div>
+                                    <div class="tab_content" @click="treadCount($event)">
+                                        <i class="iconfont icon-bad">&nbsp;{{item.tread}}</i>
+                                    </div>
+                                    <div class="tab_content" @click="goComments(item)">
+                                        <i class="iconfont icon-comments"></i>
+                                        <span>&nbsp;{{item.comments}}万</span>&nbsp;&nbsp;
+                                    </div>
+                                    <div class="tab_content" @click="shareOrder($event)">
+                                        <i class="iconfont icon-skip"></i>
+                                        <span>&nbsp;{{item.share}}万</span>&nbsp;&nbsp;
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </mt-loadmore>
+
                 </mt-tab-container-item>
 
                 <!--  -->
@@ -101,12 +104,16 @@
                 </mt-tab-container-item>
             </mt-tab-container>
         </div>
+        <div id="toTop" @click="toTop" v-show="isShow">
+            <span class="iconfont icon-less"></span>
+        </div>
     </div>
 </template>
 
 <script>
-import { Lazyload } from "mint-ui";
+import { Lazyload, Loadmore } from "mint-ui";
 import appData from "../../common/appDataS";
+import video from "../../components/video";
 export default {
     name: "lifeInfo",
     data() {
@@ -117,8 +124,14 @@ export default {
             praise: 0,
             tread: 0,
             list: appData.lifeInfo.imgInfo,
-            videoList: appData.lifeInfo.videoInfo
+            videoList: appData.lifeInfo.videoInfo,
+            topText: '',
+            allLoaded: false,
+            isShow: false,
         };
+    },
+    components: {
+        "com-video": video
     },
     methods: {
         actionSheet: function () {
@@ -168,11 +181,46 @@ export default {
         shareOrder: function () {
             this.share = true;
         },
-        goComments: function () {
-            this.$router.push({ path: "/comments" })
-        }
+        goComments: function (m) {
+            localStorage.setItem('item_detail', JSON.stringify(m))
+            this.$router.push({ path: "/comments", query: { item: m } })
+        },
+        loadTop() {
+            //下拉刷新
+            setTimeout(() => {
+                this.$refs.loadmore.onTopLoaded();
+            }, 1500);
+        },
+        loadBottom() {
+            //上拉加载更多
+            setTimeout(() => {
+                this.allLoaded = true;
+                this.$refs.loadmore.onBottomLoaded();
+            }, 1500);
+        },
+        toTop() {
+            let h = this.$refs.top_2.offsetTop;
+            if (!document.documentElement.scrollTop) {
+                document.body.scrollTop = h;
+            } else {
+                document.documentElement.scrollTop = h;
+            }
+        },
+        showIcon() {
+            if ( !!document.documentElement.scrollTop && document.documentElement.scrollTop > 30 ) {
+                this.isShow = true;
+            } else {
+                this.isShow = false;
+            }
+        },
     },
-    created() { }
+    created() {
+    },
+    mounted() {
+        window.addEventListener("scroll", this.showIcon);
+    },
+    watch: {
+    },
 };
 </script>
 <style>
@@ -246,5 +294,20 @@ image[lazy="loading"] {
     text-align: left;
     padding: 5px 5px;
     font-size: 12px;
+}
+#toTop {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 35px;
+    height: 35px;
+    border-radius: 20px;
+    background-color: #fff;
+    text-align: center;
+    line-height: 35px;
+    opacity: 0.8;
+}
+#toTop span {
+    font-size: 25px;
 }
 </style>

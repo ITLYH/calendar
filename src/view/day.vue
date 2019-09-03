@@ -136,7 +136,11 @@ export default {
 .header {
     width: 100%;
     height: 50px;
-    background-color: rgb(250, 252, 250);
+    /* background-color: rgb(250, 252, 250); */
+    background: -webkit-linear-gradient(left, gold, pink); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, gold, pink); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, gold, pink); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, gold, pink); /* 标准的语法 */
     text-align: center;
     line-height: 50px;
     box-shadow: 0px -1px 12px #a1a09a;
