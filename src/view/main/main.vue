@@ -57,7 +57,7 @@
                                 </div>
                             </div>
                             <div class="content_right">
-                                <label @click="actionSheet" id="icon-moreunfold" class="mint-button-text iconfont icon-moreunfold">&nbsp;&nbsp;</label>
+                                <label id="icon-moreunfold" class="mint-button-text iconfont icon-moreunfold">&nbsp;&nbsp;</label>
                             </div>
                         </div>
                         <div class="tab_barList_video_box">
@@ -77,7 +77,7 @@
                                     <i class="iconfont icon-comments"></i>
                                     <span>&nbsp;{{this.comments}}万</span>&nbsp;&nbsp;
                                 </div>
-                                <div class="tab_content" @click="shareOrder">
+                                <div class="tab_content" >
                                     <i class="iconfont icon-skip"></i>
                                     <span>&nbsp;{{this.share}}万</span>&nbsp;&nbsp;
                                 </div>
@@ -136,6 +136,9 @@ export default {
             var iconGood = document.getElementById("icon-bad");
             iconGood.style.color = "red";
         },
+        onSearch(){
+            console.log("搜索")
+        }
     },
     created() { }
 };

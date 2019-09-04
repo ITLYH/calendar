@@ -8,7 +8,6 @@ import MintUI from 'mint-ui'
 import Vant from 'vant';
 import 'vant/lib/index.css';
 
-
 // import './config/rem'
 
 import 'mint-ui/lib/style.css'
