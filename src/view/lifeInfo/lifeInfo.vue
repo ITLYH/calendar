@@ -1,77 +1,54 @@
 <template>
     <div>
-        <div>
-            <div id="nav_bar_box">
-                <mt-navbar fixed v-model="selected">
-                    <mt-tab-item id="1" class="nav_bar">关注</mt-tab-item>
-                    <mt-tab-item id="2" class="nav_bar">推荐</mt-tab-item>
-                    <mt-tab-item id="3" class="nav_bar">视频</mt-tab-item>
-                    <mt-tab-item id="4" class="nav_bar">图片</mt-tab-item>
-                    <mt-tab-item id="5" class="nav_bar">资讯</mt-tab-item>
-                    <mt-tab-item id="6" class="nav_bar">文字</mt-tab-item>
-                </mt-navbar>
-            </div>
-            <!-- tab-container -->
-            <mt-tab-container v-model="selected">
-                <!--  -->
-                <mt-tab-container-item id="1">
-                    <p>关注</p>
-                </mt-tab-container-item>
-
-                <!--  -->
-                <mt-tab-container-item id="2" ref="top_2">
-                    <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" ref="loadmore">
-                        <div class="tab_barList" v-for="(item,index) in videoList" :key="index">
-                            <div class="tab_barList_content">
-                                <div class="content_left">
-                                    <img class="user_img" :src="item.userImg" alt />
-                                    <div class="user_msg">
-                                        <span>{{item.user}}</span>
-                                        <br />
-                                        <span>{{item.describe}}</span>
-                                    </div>
-                                </div>
-                                <div class="content_right">
-                                    <label @click="actionSheet" id="icon-moreunfold" class="mint-button-text iconfont icon-moreunfold">&nbsp;&nbsp;</label>
+        <div ref="top_2">
+            <van-tabs v-model="active">
+                <van-tab title="关注">
+                    关注
+                </van-tab>
+                <van-tab title="推荐">
+                    <div class="tab_barList" v-for="(item,index) in videoList" :key="index">
+                        <div class="tab_barList_content">
+                            <div class="content_left">
+                                <img class="user_img" :src="item.userImg" alt />
+                                <div class="user_msg">
+                                    <span>{{item.user}}</span>
+                                    <br />
+                                    <span>{{item.describe}}</span>
                                 </div>
                             </div>
-
-                            <div class="tab_barList_video_box">
-                                <p class="log_title">{{item.title}}</p>
-                                <com-video :urls="item.url" v-if="item.url.split('.')[item.url.split('.').length-1] !== 'jpg'"></com-video>
-                                <img :src="item.url" alt height="215" width="auto" v-else />
+                            <div class="content_right">
+                                <label @click="actionSheet" id="icon-moreunfold" class="mint-button-text iconfont icon-moreunfold">&nbsp;&nbsp;</label>
                             </div>
+                        </div>
 
-                            <div class="tab_barList_content">
-                                <div class="content_footer">
-                                    <div class="tab_content" @click="praiseCount($event)">
-                                        <i class="iconfont icon-good">&nbsp;{{item.praise}}</i>
-                                    </div>
-                                    <div class="tab_content" @click="treadCount($event)">
-                                        <i class="iconfont icon-bad">&nbsp;{{item.tread}}</i>
-                                    </div>
-                                    <div class="tab_content" @click="goComments(item)">
-                                        <i class="iconfont icon-comments"></i>
-                                        <span>&nbsp;{{item.comments}}万</span>&nbsp;&nbsp;
-                                    </div>
-                                    <div class="tab_content" @click="shareOrder($event)">
-                                        <i class="iconfont icon-skip"></i>
-                                        <span>&nbsp;{{item.share}}万</span>&nbsp;&nbsp;
-                                    </div>
+                        <div class="tab_barList_video_box">
+                            <p class="log_title">{{item.title}}</p>
+                            <com-video :urls="item.url" v-if="item.url.split('.')[item.url.split('.').length-1] !== 'jpg'"></com-video>
+                            <img :src="item.url" alt height="215" width="auto" v-else />
+                        </div>
+
+                        <div class="tab_barList_content">
+                            <div class="content_footer">
+                                <div class="tab_content" @click="praiseCount($event)">
+                                    <i class="iconfont icon-good">&nbsp;{{item.praise}}</i>
+                                </div>
+                                <div class="tab_content" @click="treadCount($event)">
+                                    <i class="iconfont icon-bad">&nbsp;{{item.tread}}</i>
+                                </div>
+                                <div class="tab_content" @click="goComments(item)">
+                                    <i class="iconfont icon-comments"></i>
+                                    <span>&nbsp;{{item.comments}}万</span>&nbsp;&nbsp;
+                                </div>
+                                <div class="tab_content" @click="shareOrder($event)">
+                                    <i class="iconfont icon-skip"></i>
+                                    <span>&nbsp;{{item.share}}万</span>&nbsp;&nbsp;
                                 </div>
                             </div>
                         </div>
-                    </mt-loadmore>
-
-                </mt-tab-container-item>
-
-                <!--  -->
-                <mt-tab-container-item id="3">
-                    <p>视频</p>
-                </mt-tab-container-item>
-
-                <!--  -->
-                <mt-tab-container-item id="4">
+                    </div>
+                </van-tab>
+                <van-tab title="视频">内容 3</van-tab>
+                <van-tab title="图片">
                     <ul>
                         <li v-for="item in list" id="lazy_li">
                             <div class="tab_barList_content">
@@ -91,19 +68,12 @@
                             <mt-cell :title="item.title" :label="item.text" is-link :to="{ name: 'main' }"></mt-cell>
                         </li>
                     </ul>
-                </mt-tab-container-item>
-
-                <!--  -->
-                <mt-tab-container-item id="5">
-                    <p>资讯</p>
-                </mt-tab-container-item>
-
-                <!--  -->
-                <mt-tab-container-item id="6">
-                    <p>文字</p>
-                </mt-tab-container-item>
-            </mt-tab-container>
+                </van-tab>
+                <van-tab title="资讯">内容 3</van-tab>
+                <van-tab title="文字">内容 2</van-tab>
+            </van-tabs>
         </div>
+
         <div id="toTop" @click="toTop" v-show="isShow">
             <span class="iconfont icon-less"></span>
         </div>
@@ -111,7 +81,8 @@
 </template>
 
 <script>
-import { Lazyload, Loadmore } from "mint-ui";
+
+import { NavBar, Tab, Tabs } from 'vant';
 import appData from "../../common/appDataS";
 import video from "../../components/video";
 export default {
@@ -128,6 +99,7 @@ export default {
             topText: '',
             allLoaded: false,
             isShow: false,
+            active: 1,
         };
     },
     components: {
@@ -207,7 +179,7 @@ export default {
             }
         },
         showIcon() {
-            if ( !!document.documentElement.scrollTop && document.documentElement.scrollTop > 30 ) {
+            if (!!document.documentElement.scrollTop && document.documentElement.scrollTop > 30) {
                 this.isShow = true;
             } else {
                 this.isShow = false;
