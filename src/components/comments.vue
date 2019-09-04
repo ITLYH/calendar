@@ -45,7 +45,7 @@
                         </span>
                     </div>
                     <p>{{item.comments_detail}}</p>
-                    <span>{{item.comments_reply}}回复<i class="iconfont icon-more"></i></span>
+                    <span @click="popupVisible4=true">{{item.comments_reply}}回复<i class="iconfont icon-more"></i></span>
                 </div>
             </div>
         </div>
@@ -75,6 +75,25 @@
                 </span>
             </div>
         </div>
+
+        <mt-popup v-model="popupVisible4" position="bottom" class="mint-popup-4" >
+            <div class="comments_list" @touchmove.native.stop.prevent>
+                <div class="comments_listS" v-for="(item,index) in commentsList" :key="index">
+                    <img :src="item.comments_user_img">
+                    <div>
+                        <div>
+                            <span>{{item.comments_user}}</span> · <span>{{item.comments_time}}</span>
+                            <span @click="giveLike(item.comments_good,index,$event)">
+                                <span>{{item.comments_good}} </span><i :class="item.flag?'iconfont icon-good-filling':'iconfont icon-good'" :style="{'color':item.flag?'red':'black'}"></i>
+                            </span>
+                        </div>
+                        <p>{{item.comments_detail}}</p>
+                        <span @click="popupVisible4=true">{{item.comments_reply}}回复<i class="iconfont icon-more"></i></span>
+                    </div>
+                </div>
+            </div>
+        </mt-popup>
+
     </div>
 </template>
 <script>
@@ -90,15 +109,12 @@ export default {
             items: JSON.parse(localStorage.getItem('item_detail')),
             commentsList: appData.comments.comments_list,
             flag: false,
-            // urls: require('../../static/video/video_1.mp4'),
+            popupVisible4: false,
         };
     },
     props: [],
     components: {
         "com-video": video
-    },
-    watch: {
-
     },
     methods: {
         GuanZuFun() {
@@ -164,7 +180,17 @@ export default {
                 })
             }
 
-        }
+        },
+        onDateChange(picker, values) {
+            if (values[0] > values[1]) {
+                picker.setSlotValue(1, values[0]);
+            }
+            this.dateStart = values[0];
+            this.dateEnd = values[1];
+        },
+        handler(e) {
+            e.preventDefault();
+        },
     },
     created() {
         this.rout();
@@ -173,16 +199,36 @@ export default {
         if (this.items.url.split('.')[this.items.url.split('.').length - 1] == "mp4") {
             document.getElementById('comments').style.paddingTop = '260px';
         }
+        // let stop = document.querySelector(".mint-popup-4");
+        // stop.addEventListener("touchmove", (event) => {
+        //     event.preventDefault();  //阻止默认行为                 
+        //     event.stopPropagation(); //阻止冒泡  
+        // }, false)
     },
     watch: {
-        "$route": "rout"
+        "$route": "rout",
+        popupVisible: function (val) {
+            if (val) {
+                document.getElementsByTagName('body')[0].addEventListener('touchmove', this.handler, { passive: false });
+            } else {
+                document.getElementsByTagName('body')[0].addEventListener('touchmove', this.handler, { passive: false });
+            }
+        }
     },
-
 };
 </script>
 
 
 <style scoped>
+.mint-popup-4 {
+    width: 100%;
+    height: 30%;
+    overflow: hidden;
+}
+.picker-slot-wrapper,
+.picker-item {
+    backface-visibility: hidden;
+}
 #comments {
     padding-top: 290px;
 }
@@ -317,6 +363,7 @@ export default {
 .comments_list {
     padding: 5px;
     background-color: #fff;
+    backface-visibility: hidden;
 }
 .comments_listS {
     padding: 8px 0px;

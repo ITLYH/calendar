@@ -17,32 +17,32 @@ export default {
         };
     },
     props: ["urls", "flag"],
-    watch: {
-    },
     methods: {
 
     },
     created() {
-
     },
     mounted() {
         let v = document.getElementById('tab_barList_video');
         v.addEventListener('play', function () {//播放开始执行的函数
-            console.log(v.controls);
-            if (v.controls == 'false') {
-                console.log('1');
-                this.flag = false;
-            } else {
-                console.log('2');
-                this.flag = true;
-            }
+            console.log('play');
+            this.flag = false;
         });
-        v.addEventListener('pause', function () {//播放开始执行的函数
+        v.addEventListener('pause', function () {//播放暂停执行的函数
             console.log('pause');
             this.flag = true;
         });
     },
     watch: {
+        flag:function(n,o){
+            console.loe(n)
+            console.loe(o)
+        }
+    },
+    computed: {
+        // test() {
+        //     return flag || this.isShow
+        // }
     }
 };
 </script>

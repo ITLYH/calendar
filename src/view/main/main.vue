@@ -1,56 +1,51 @@
 <template>
     <div id="main">
         <div class="search">
-            <mt-search v-model="value">
-                <mt-cell v-for="(item,index) in searchData" :key="index" :title="item.title" :value="item.value"></mt-cell>
-            </mt-search>
+            <van-search id="search_box" v-model="value" background="linear-gradient(to right, gold, pink)" placeholder="请输入搜索关键词" show-action shape="round" label="地址" @search="onSearch">
+                <template #action>
+                    <div @click="onSearch">搜索</div>
+                </template>
+            </van-search>
         </div>
 
         <!-- 轮播图start -->
         <div class="swiper_bar">
-            <mt-swipe>
-                <mt-swipe-item v-for="(item, index) in slidesPath" :key="index">
+            <van-swipe :autoplay="3000" indicator-color="white">
+                <van-swipe-item v-for="(item, index) in slidesPath" :key="index">
                     <img class="swiper" :src="item.url" />
-                </mt-swipe-item>
-            </mt-swipe>
+                </van-swipe-item>
+            </van-swipe>
         </div>
         <!-- 轮播图end -->
 
         <!-- 导航栏start -->
         <div id="nav_box">
-            <mt-swipe :auto="0">
-                <mt-swipe-item>
+            <van-swipe :show-indicators="false">
+                <van-swipe-item>
                     <div class="nav_div" v-for="(item ,index) in navPath1" :key="index">
                         <img class="nav_img" :src="item.url" />
                         <p class="nav_p">{{item.name}}</p>
                     </div>
-                </mt-swipe-item>
-                <mt-swipe-item>
+                </van-swipe-item>
+                <van-swipe-item>
                     <div class="nav_div" v-for="(item ,index) in navPath2" :key="index">
                         <img class="nav_img" :src="item.url" />
                         <p class="nav_p">{{item.name}}</p>
                     </div>
-                </mt-swipe-item>
-            </mt-swipe>
+                </van-swipe-item>
+            </van-swipe>
         </div>
         <!-- 导航栏end -->
 
         <div class="cell_hot">
-            <mt-cell title="热门信息" is-link>
-                <span style="color: #000;">更多</span>
-            </mt-cell>
+            <van-nav-bar title="" left-text="热门信息">
+                <van-icon name="arrow" slot="right" />
+            </van-nav-bar>
         </div>
 
         <div>
-            <mt-navbar v-model="selected">
-                <mt-tab-item id="1" class="nav_bar">video</mt-tab-item>
-                <mt-tab-item id="2" class="nav_bar">image</mt-tab-item>
-                <mt-tab-item id="3" class="nav_bar">message</mt-tab-item>
-            </mt-navbar>
-
-            <!-- tab-container -->
-            <mt-tab-container v-model="selected">
-                <mt-tab-container-item id="1">
+            <van-tabs>
+                <van-tab title="video">
                     <div class="tab_barList">
                         <div class="tab_barList_content">
                             <div class="content_left">
@@ -62,22 +57,11 @@
                                 </div>
                             </div>
                             <div class="content_right">
-                                <label
-                                    @click="actionSheet"
-                                    id="icon-moreunfold"
-                                    class="mint-button-text iconfont icon-moreunfold"
-                                >&nbsp;&nbsp;</label>
+                                <label @click="actionSheet" id="icon-moreunfold" class="mint-button-text iconfont icon-moreunfold">&nbsp;&nbsp;</label>
                             </div>
                         </div>
                         <div class="tab_barList_video_box">
-                            <video
-                                width="100%"
-                                height="215"
-                                class="tab_barList_video"
-                                src="../../../static/video/video_1.mp4"
-                                poster="../../../static/video/video_1_gif.gif"
-                                controls
-                            ></video>
+                            <video width="100%" height="215" class="tab_barList_video" src="../../../static/video/video_1.mp4" poster="../../../static/video/video_1_gif.gif" controls></video>
                         </div>
                         <div class="tab_barList_content">
                             <div class="content_footer">
@@ -100,91 +84,73 @@
                             </div>
                         </div>
                     </div>
-                </mt-tab-container-item>
-                <mt-tab-container-item id="2">
-                    <p>2222</p>
-                </mt-tab-container-item>
-                <mt-tab-container-item id="3">
-                    <p>3333</p>
-                </mt-tab-container-item>
-            </mt-tab-container>
+                </van-tab>
+                <van-tab title="image">内容 2</van-tab>
+                <van-tab title="message">内容 3</van-tab>
+                <van-tab title="image">内容 2</van-tab>
+                <van-tab title="message">内容 3</van-tab>
+                <van-tab title="image">内容 2</van-tab>
+                <van-tab title="message">内容 3</van-tab>
+            </van-tabs>
         </div>
-
-        <mt-actionsheet :actions="actions" v-model="sheetVisible" closeOnClickModal="true"></mt-actionsheet>
-        <share v-show="share"></share>
     </div>
 </template>
 <script>
 import {
     Loadmore,
-    Navbar,
-    TabItem,
     Cell,
-    Search,
-    Swipe,
-    SwipeItem
+    Actionsheet
 } from "mint-ui";
+import { Search, Swipe, SwipeItem, NavBar, Tab, Tabs } from 'vant';
 import share from "../../components/share";
 import appData from "../../common/appDataS";
+
 export default {
     name: "main",
     components: {
-        share
     },
     data() {
         const that = this;
         return {
-            share: false,
             value: "",
             selected: "1",
             praise: 99, // 赞
             tread: 0, // 踩
             comments: 150, // 评论
             share: 66, // 分享
-            sheetVisible: false,
             searchData: appData.main.searchData,
             slidesPath: appData.main.imgPath.slides,
             navPath1: appData.main.imgPath.nav[0],
             navPath2: appData.main.imgPath.nav[1],
-            actions: [
-                { name: "不感兴趣", method: this.noInterest },
-                { name: "内容重复", method: this.contentRepeat },
-                { name: "内容引起不适", method: this.contentBad }
-            ]
         };
     },
     methods: {
-        actionSheet: function() {
-            this.sheetVisible = true;
-        },
-        noInterest: function() {
-            console.log("不感兴趣");
-        },
-        contentRepeat: function() {
-            console.log("内容重复");
-        },
-        contentBad: function() {
-            console.log("内容引起不适");
-        },
-        praiseCount: function() {
+        praiseCount: function () {
             this.praise++;
             var iconGood = document.getElementById("icon-good");
             iconGood.className = "iconfont icon-good-filling";
             iconGood.style.color = "red";
         },
-        treadCount: function() {
+        treadCount: function () {
             this.tread++;
             var iconGood = document.getElementById("icon-bad");
             iconGood.style.color = "red";
         },
-        shareOrder: function() {
-            this.share = true;
-        }
     },
-    created() {}
+    created() { }
 };
 </script>
 <style scoped>
+#search_box {
+    background: -webkit-linear-gradient(
+        left,
+        gold,
+        pink
+    ); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, gold, pink); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, gold, pink); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, gold, pink); /* 标准的语法 */
+}
 #main {
     height: auto;
 }

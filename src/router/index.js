@@ -9,6 +9,7 @@ import login from '../view/login.vue'
 import day from '../view/day.vue'
 import comments from '../components/comments.vue'
 import video from '../components/video.vue'
+import commentDetail from '../components/commentDetail.vue'
 
 Vue.use(VueRouter);
 
@@ -27,6 +28,7 @@ const router = new VueRouter({
             ],
         },
         { path: '/comments', name: 'comments', component: comments },
+        { path: '/commentDetail', name: 'commentDetail', component: commentDetail },
         { path: '/video', name: 'video', component: video },
     ],
     scrollBehavior(to, from, savedPosition) {

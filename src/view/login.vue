@@ -8,13 +8,7 @@
                 <div class="login_content_center">
                     <label for="username">
                         账户：
-                        <input
-                            id="username"
-                            type="text"
-                            v-model="username"
-                            placeholder="请输入账户"
-                            autofocus
-                        />
+                        <input id="username" type="text" v-model="username" placeholder="请输入账户" autofocus />
                     </label>
                     <br />
                     <label for="psw">
@@ -23,23 +17,16 @@
                     </label>
                 </div>
                 <div>
-                    <mt-button
-                        type="default"
-                        id="login_in"
-                        @click="loginIn()"
-                        @click.native="popupVisible2 = true"
-                    >登录</mt-button>
-                    <mt-button type="default" id="registered">注册</mt-button>
+                    <van-button plain type="primary" id="login_in" @click="loginIn()">登录</van-button>
+                    <van-button plain type="danger" id="registered">注册</van-button>
                 </div>
             </div>
         </div>
-        <!-- 提示组件 -->
-        <show-tips :tipsData="tipsData" :popupVisible="popupVisible"></show-tips>
     </div>
 </template>
 <script>
-import { Field, Button, Popup } from "mint-ui";
-import tips from "../components/showTips";
+import { Button, Toast } from 'vant';
+import { setTimeout } from 'timers';
 export default {
     name: "login",
     data() {
@@ -48,12 +35,10 @@ export default {
             password: "",
             saveUsername: ["admin", "username"],
             savePsw: "111111",
-            popupVisible: false,
             tipsData: ""
         };
     },
     components: {
-        "show-tips": tips
     },
     created() {
         document.body.style.paddingBottom = "0px";
@@ -64,26 +49,31 @@ export default {
     methods: {
         // 登录
         loginIn() {
+            let that = this;
+            Toast.loading({
+                mask: true,
+                message: '登录中...'
+            });
             if (
-                this.saveUsername.indexOf(this.username) != -1 &&
-                this.savePsw == this.password
-            ) {
+                this.saveUsername.indexOf(this.username) != -1 && this.savePsw == this.password) {
                 const token = this.randomCoding().toLowerCase();
 
                 localStorage.setItem("username", this.username);
                 localStorage.setItem("token", token);
-                
+
                 this.$store.commit("loginType", true);
                 this.$store.commit("updateUserInfo", {
                     username: this.username
                 });
-
-                this.$router.push({ path: "/nav" });
+                // 模拟请求
+                setTimeout(function(){
+                    Toast.clear();
+                    that.$router.push({ path: "/nav" });
+                },1500)
             } else {
+                Toast.fail('登录失败，用户名或密码错误，请重新输入。');
                 this.username = "";
                 this.password = "";
-                this.popupVisible = true;
-                this.tipsData = "用户名或密码错误，请重新输入。";
             }
         },
         // 随机字母
@@ -159,11 +149,13 @@ label {
     border-bottom: 1px solid #58b5c0;
 }
 #username {
+    width: 70%;
     height: 25px;
     background-color: rgba(0, 0, 0, 0);
     color: #fff;
 }
 #psw {
+    width: 70%;
     height: 25px;
     background-color: rgba(0, 0, 0, 0);
     color: #fff;
@@ -181,6 +173,7 @@ textarea::-webkit-input-placeholder {
     font-size: 13px;
     border-radius: 5px;
     margin-right: 20px;
+    line-height: 0px;
 }
 #registered {
     border: 0;
@@ -190,15 +183,6 @@ textarea::-webkit-input-placeholder {
     color: rgb(243, 247, 9);
     font-size: 13px;
     border-radius: 5px;
-}
-#popup_login {
-    background-color: rgba(0, 0, 0, 0.4);
-    color: #fff;
-    width: 80%;
-    height: 50px;
-    line-height: 50px;
-    text-align: center;
-    border-radius: 8px;
-    backface-visibility: hidden;
+    line-height: 0px;
 }
 </style>

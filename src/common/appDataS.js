@@ -467,7 +467,7 @@ var appDataS = {
             {
                 id: "1",
                 comments_user: "悔创阿里杰克马",
-                comments_user_img: require("../../static/image/swiper-1.jpg"),
+                comments_user_img: require("../../static/image/user_02.jpg"),
                 comments_time: "8-20",
                 comments_good: "5558",
                 comments_reply: "1.4万",
@@ -476,7 +476,7 @@ var appDataS = {
             {
                 id: "2",
                 comments_user: "一无所有王健林",
-                comments_user_img: require("../../static/image/swiper-2.jpg"),
+                comments_user_img: require("../../static/image/user_wjl.jpg"),
                 comments_time: "8-26",
                 comments_good: "3357",
                 comments_reply: "1200",
@@ -485,7 +485,7 @@ var appDataS = {
             {
                 id: "3",
                 comments_user: "普通家庭马化腾",
-                comments_user_img: require("../../static/image/swiper-3.jpg"),
+                comments_user_img: require("../../static/image/user_03.jpg"),
                 comments_time: "8-27",
                 comments_good: "668",
                 comments_reply: "110",
@@ -494,7 +494,7 @@ var appDataS = {
             {
                 id: "4",
                 comments_user: "北大还行撒贝宁",
-                comments_user_img: require("../../static/image/swiper-4.jpg"),
+                comments_user_img: require("../../static/image/user_04.jpg"),
                 comments_time: "8-26",
                 comments_good: "108",
                 comments_reply: "120",
@@ -503,7 +503,7 @@ var appDataS = {
             {
                 id: "5",
                 comments_user: "多财多亿的马某某",
-                comments_user_img: require("../../static/image/swiper-1.jpg"),
+                comments_user_img: require("../../static/image/user_wjl.jpg"),
                 comments_time: "8-28",
                 comments_good: "50",
                 comments_reply: "12",
@@ -512,7 +512,7 @@ var appDataS = {
             {
                 id: "6",
                 comments_user: "普通家庭马化腾",
-                comments_user_img: require("../../static/image/swiper-3.jpg"),
+                comments_user_img: require("../../static/image/user_01.jpg"),
                 comments_time: "8-27",
                 comments_good: "668",
                 comments_reply: "110",
@@ -521,7 +521,7 @@ var appDataS = {
             {
                 id: "7",
                 comments_user: "北大还行撒贝宁",
-                comments_user_img: require("../../static/image/swiper-4.jpg"),
+                comments_user_img: require("../../static/image/user_04.jpg"),
                 comments_time: "8-26",
                 comments_good: "108",
                 comments_reply: "120",
@@ -530,7 +530,7 @@ var appDataS = {
             {
                 id: "8",
                 comments_user: "下水道的阿丽塔",
-                comments_user_img: require("../../static/image/swiper-1.jpg"),
+                comments_user_img: require("../../static/image/user_03.jpg"),
                 comments_time: "8-28",
                 comments_good: "50",
                 comments_reply: "12",
