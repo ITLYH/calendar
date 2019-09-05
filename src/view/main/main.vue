@@ -1,7 +1,7 @@
 <template>
     <div id="main">
         <div class="search">
-            <van-search id="search_box" v-model="value" background="linear-gradient(to right, gold, pink)" placeholder="请输入搜索关键词" show-action shape="round" label="地址" @search="onSearch">
+            <van-search id="search_box" v-model="value" background="linear-gradient(to right, gold, pink)" placeholder="请输入搜索关键词" show-action shape="round" :label="city" @search="onSearch">
                 <template #action>
                     <div @click="onSearch">搜索</div>
                 </template>
@@ -77,7 +77,7 @@
                                     <i class="iconfont icon-comments"></i>
                                     <span>&nbsp;{{this.comments}}万</span>&nbsp;&nbsp;
                                 </div>
-                                <div class="tab_content" >
+                                <div class="tab_content">
                                     <i class="iconfont icon-skip"></i>
                                     <span>&nbsp;{{this.share}}万</span>&nbsp;&nbsp;
                                 </div>
@@ -93,17 +93,20 @@
                 <van-tab title="message">内容 3</van-tab>
             </van-tabs>
         </div>
+
+        <!-- 地址选择start -->
+        <van-action-sheet v-model="showss" title="地址选择" :round="true">
+            <van-area :area-list="areaLists" :value="addrCode" @confirm="confirm" />
+        </van-action-sheet>
+        <!-- 地址选择end -->
+
     </div>
 </template>
 <script>
-import {
-    Loadmore,
-    Cell,
-    Actionsheet
-} from "mint-ui";
-import { Search, Swipe, SwipeItem, NavBar, Tab, Tabs } from 'vant';
+import { Search, Swipe, SwipeItem, NavBar, Tab, Tabs, Area, Popup, ActionSheet } from 'vant';
 import share from "../../components/share";
 import appData from "../../common/appDataS";
+import areaList from "../../common/area";
 
 export default {
     name: "main",
@@ -122,6 +125,12 @@ export default {
             slidesPath: appData.main.imgPath.slides,
             navPath1: appData.main.imgPath.nav[0],
             navPath2: appData.main.imgPath.nav[1],
+            areaLists: areaList,
+            showss: false,
+            addrCode: '440105',
+            province: '',
+            city: '地址',
+            district: '',
         };
     },
     methods: {
@@ -136,24 +145,32 @@ export default {
             var iconGood = document.getElementById("icon-bad");
             iconGood.style.color = "red";
         },
-        onSearch(){
-            console.log("搜索")
+        onSearch() {
+            console.log("搜索");
+        },
+        confirm(e) {
+            this.province = e[0].name;
+            this.city = e[1].name;
+            this.district = e[2].name;
+            this.showss = false;
         }
     },
-    created() { }
+    created() { },
+    mounted() {
+        const that = this;
+        let label = document.getElementsByClassName('van-search__label')[0];
+        label.addEventListener("click", function () {
+            that.showss ? that.showss = false : that.showss = true;
+        })
+    },
+    watch: {
+        showss: function (n, o) {
+
+        }
+    }
 };
 </script>
 <style scoped>
-#search_box {
-    background: -webkit-linear-gradient(
-        left,
-        gold,
-        pink
-    ); /* Safari 5.1 - 6.0 */
-    background: -o-linear-gradient(right, gold, pink); /* Opera 11.1 - 12.0 */
-    background: -moz-linear-gradient(right, gold, pink); /* Firefox 3.6 - 15 */
-    background: linear-gradient(to right, gold, pink); /* 标准的语法 */
-}
 #main {
     height: auto;
 }
@@ -171,6 +188,14 @@ export default {
 }
 .search {
     height: 52px;
+    background: -webkit-linear-gradient(
+        left,
+        gold,
+        pink
+    ); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, gold, pink); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, gold, pink); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, gold, pink); /* 标准的语法 */
 }
 .mint-search {
     height: 100%;

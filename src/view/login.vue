@@ -26,7 +26,6 @@
 </template>
 <script>
 import { Button, Toast } from 'vant';
-import { setTimeout } from 'timers';
 export default {
     name: "login",
     data() {

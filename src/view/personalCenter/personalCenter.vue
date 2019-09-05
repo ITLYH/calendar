@@ -1,7 +1,9 @@
 <template>
     <div id="personalCenter">
         <div class="top">
-            <mt-header fixed title="个人中心"></mt-header>
+            <van-nav-bar fixed title="个人中心" id="top_bar">
+                <van-icon name="setting" slot="right" size="20px" color="rgba(255, 100, 97, 0.7)" @click="set"/>
+            </van-nav-bar>
         </div>
         <main class="main">
             <div class="main_user_img">
@@ -30,12 +32,7 @@
                 </div>
             </div>
             <div class="userIntegral">
-                <ul
-                    v-infinite-scroll="loadMore"
-                    infinite-scroll-disabled="loading"
-                    infinite-scroll-distance="10"
-                    class="userIntegral_ul"
-                >
+                <ul v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="10" class="userIntegral_ul">
                     <li class="userIntegral_li">
                         <div class="userIntegral_top">
                             <p class="userIntegral_span">阳朔：国内不得不去的十大旅游城市之一</p>
@@ -139,7 +136,7 @@
     </div>
 </template>
 <script>
-import { InfiniteScroll, Header } from "mint-ui";
+import { NavBar,Icon  } from 'vant';
 export default {
     name: "personalCenter",
     data() {
@@ -162,12 +159,25 @@ export default {
                 }
                 this.loading = false;
             }, 2500);
+        },
+        set(){
+
         }
     }
 };
 </script>
 
 <style scoped>
+#top_bar{
+        background: -webkit-linear-gradient(
+        left,
+        gold,
+        pink
+    ); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, gold, pink); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, gold, pink); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, gold, pink); /* 标准的语法 */
+}
 #personalCenter {
     background-color: #f2f2f2;
 }
@@ -187,7 +197,11 @@ export default {
     width: 100%;
     padding-top: 75px;
     line-height: 20px;
-    background: -webkit-linear-gradient(left, gold, pink); /* Safari 5.1 - 6.0 */
+    background: -webkit-linear-gradient(
+        left,
+        gold,
+        pink
+    ); /* Safari 5.1 - 6.0 */
     background: -o-linear-gradient(right, gold, pink); /* Opera 11.1 - 12.0 */
     background: -moz-linear-gradient(right, gold, pink); /* Firefox 3.6 - 15 */
     background: linear-gradient(to right, gold, pink); /* 标准的语法 */
@@ -276,7 +290,7 @@ export default {
     width: 65px;
     border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
-    background-color: rgba(255, 100, 97, .7);
+    background-color: rgba(255, 100, 97, 0.7);
     color: #fff;
     font-size: 12px;
     line-height: 25px;

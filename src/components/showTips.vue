@@ -1,16 +1,8 @@
 <template>
     <div id="tips">
-        <mt-popup
-            v-model="popupVisible"
-            popup-transition="popup-fade"
-            :modal="false"
-            position="top"
-            id="popup_login"
-        >{{tipsData}}</mt-popup>
     </div>
 </template>
 <script>
-import { Popup } from "mint-ui";
 export default {
     data() {
         return {
@@ -18,13 +10,6 @@ export default {
     },
     props: ["tipsData", "popupVisible"],
     watch: {
-        popupVisible(val) {
-            if (val) {
-                setTimeout(() => {
-                    this.popupVisible = false;
-                }, 2000);
-            }
-        }
     },
     methods: {
     }

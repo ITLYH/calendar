@@ -10,6 +10,7 @@ import day from '../view/day.vue'
 import comments from '../components/comments.vue'
 import video from '../components/video.vue'
 import commentDetail from '../components/commentDetail.vue'
+import userPage from '../components/userPage.vue'
 
 Vue.use(VueRouter);
 
@@ -30,6 +31,7 @@ const router = new VueRouter({
         { path: '/comments', name: 'comments', component: comments },
         { path: '/commentDetail', name: 'commentDetail', component: commentDetail },
         { path: '/video', name: 'video', component: video },
+        { path: '/userPage', name: 'userPage', component: userPage },
     ],
     scrollBehavior(to, from, savedPosition) {
         // return 期望滚动到哪个的位置
