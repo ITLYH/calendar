@@ -43,11 +43,11 @@
         <!-- 评论列表 -->
         <div class="comments_list" ref="comments_top">
             <div class="comments_listS" v-for="(item,index) in commentsList" :key="index">
-                <img :src="item.comments_user_img" />
+                <img :src="item.comments_user_img" @click="goUserPage(item)"/>
                 <div>
                     <div>
-                        <span>{{item.comments_user}}</span> ·
-                        <span>{{item.comments_time}}</span>
+                        <span @click="goUserPage(item)">{{item.comments_user}}</span> ·
+                        <span @click="goUserPage(item)">{{item.comments_time}}</span>
                         <span @click="giveLike(item.comments_good,index,$event)">
                             <span>{{item.comments_good}}</span>
                             <i :class="item.flag?'iconfont icon-good-filling':'iconfont icon-good'" :style="{'color':item.flag?'red':'black'}"></i>
@@ -268,6 +268,9 @@ export default {
         showCommentsDetail(item) {
             this.moreComments = item;
             this.show = true;
+        },
+        goUserPage(info){
+            this.$router.push({ name: 'userPage', query: { userinfo: JSON.stringify(info) }});
         }
     },
     created() {

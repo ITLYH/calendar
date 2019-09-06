@@ -34,7 +34,10 @@ export default {
             password: "",
             saveUsername: ["admin", "username"],
             savePsw: "111111",
-            tipsData: ""
+            tipsData: "",
+            theImg: null,
+            theSign: null,
+            userInfo: null,
         };
     },
     components: {
@@ -57,18 +60,32 @@ export default {
                 this.saveUsername.indexOf(this.username) != -1 && this.savePsw == this.password) {
                 const token = this.randomCoding().toLowerCase();
 
-                localStorage.setItem("username", this.username);
-                localStorage.setItem("token", token);
+                if (this.username == "admin") {
+                    this.theImg = "user_05.jpg";
+                    this.theSign = "只要心中有海，哪里都是马尔代夫";
+                } else {
+                    this.theImg = "user_01.jpg";
+                    this.theSign = "吴彦祖华南分祖...";
+                }
+
+                this.userInfo = {
+                    username: this.username,
+                    userImg: require("../../static/image/" + this.theImg),
+                    userSign: this.theSign,
+                }
 
                 this.$store.commit("loginType", true);
-                this.$store.commit("updateUserInfo", {
-                    username: this.username
-                });
+                this.$store.commit("updateUserInfo",this.userInfo);
+
+                localStorage.setItem("username", this.username);
+                localStorage.setItem("token", token);
+                localStorage.setItem("userInfo", JSON.stringify(this.userInfo));
+
                 // 模拟请求
-                setTimeout(function(){
+                setTimeout(function () {
                     Toast.clear();
                     that.$router.push({ path: "/nav" });
-                },1500)
+                }, 1500)
             } else {
                 Toast.fail('登录失败，用户名或密码错误，请重新输入。');
                 this.username = "";

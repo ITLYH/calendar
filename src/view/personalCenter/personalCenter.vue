@@ -9,8 +9,8 @@
             <div class="main_user_img">
                 <img class="user_img" src="../../../static/image/user_1.jpg" alt />
                 <p class="user_name">{{this.$store.state.userName}}</p>
-                <div class="user_set">
-                    <div>设 置</div>
+                <div class="user_sign">
+                    <p>{{userInfos.userSign}}</p>
                 </div>
                 <div>
                     <div class="user_count">
@@ -81,54 +81,6 @@
                             </div>
                         </div>
                     </li>
-                    <li class="userIntegral_li">
-                        <div class="userIntegral_top">
-                            <p class="userIntegral_span">阳朔：国内不得不去的十大旅游城市之一</p>
-                            <span class="tips">#旅游</span>
-                        </div>
-                        <div class="userIntegral_tip">
-                            <img class="userIntegralImg" src="../../../static/image/yangshuo.jpg" alt />
-                            <div class="userIntegral_div">
-                                <p>阳朔县拥有漓江景区、《印象·刘三姐》、碧莲峰山水园、聚龙潭、蝴蝶泉、刘三姐水上公园、鉴山寺等营业景点15处。2018年11月，荣登“2018中国幸福百县榜”。</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="userIntegral_li">
-                        <div class="userIntegral_top">
-                            <p class="userIntegral_span">阳朔：国内不得不去的十大旅游城市之一</p>
-                            <span class="tips">#旅游</span>
-                        </div>
-                        <div class="userIntegral_tip">
-                            <img class="userIntegralImg" src="../../../static/image/yangshuo.jpg" alt />
-                            <div class="userIntegral_div">
-                                <p>阳朔县拥有漓江景区、《印象·刘三姐》、碧莲峰山水园、聚龙潭、蝴蝶泉、刘三姐水上公园、鉴山寺等营业景点15处。2018年11月，荣登“2018中国幸福百县榜”。</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="userIntegral_li">
-                        <div class="userIntegral_top">
-                            <p class="userIntegral_span">阳朔：国内不得不去的十大旅游城市之一</p>
-                            <span class="tips">#旅游</span>
-                        </div>
-                        <div class="userIntegral_tip">
-                            <img class="userIntegralImg" src="../../../static/image/yangshuo.jpg" alt />
-                            <div class="userIntegral_div">
-                                <p>阳朔县拥有漓江景区、《印象·刘三姐》、碧莲峰山水园、聚龙潭、蝴蝶泉、刘三姐水上公园、鉴山寺等营业景点15处。2018年11月，荣登“2018中国幸福百县榜”。</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="userIntegral_li">
-                        <div class="userIntegral_top">
-                            <p class="userIntegral_span">阳朔：国内不得不去的十大旅游城市之一</p>
-                            <span class="tips">#旅游</span>
-                        </div>
-                        <div class="userIntegral_tip">
-                            <img class="userIntegralImg" src="../../../static/image/yangshuo.jpg" alt />
-                            <div class="userIntegral_div">
-                                <p>阳朔县拥有漓江景区、《印象·刘三姐》、碧莲峰山水园、聚龙潭、蝴蝶泉、刘三姐水上公园、鉴山寺等营业景点15处。2018年11月，荣登“2018中国幸福百县榜”。</p>
-                            </div>
-                        </div>
-                    </li>
                 </ul>
             </div>
         </main>
@@ -146,6 +98,7 @@ export default {
             integral: "90万",
             userIntegralImg: "../../../static/image/yangshuo.jpg",
             list: [],
+            userInfos: null,
             loading: false
         };
     },
@@ -161,8 +114,11 @@ export default {
             }, 2500);
         },
         set(){
-
+            this.$router.push({ path: '/userDetailInfo', query: {  }})
         }
+    },
+    created(){
+        this.userInfos = JSON.parse(localStorage.getItem('userInfo'));
     }
 };
 </script>
@@ -279,21 +235,8 @@ export default {
     line-height: 20px;
     margin: 5px 0px 0px 10px;
 }
-.user_set {
-    position: relative;
-    width: 100%;
-    height: 25px;
-}
-.user_set div {
-    float: right;
-    height: 25px;
-    width: 65px;
-    border-top-left-radius: 50px;
-    border-bottom-left-radius: 50px;
-    background-color: rgba(255, 100, 97, 0.7);
+.user_sign{
     color: #fff;
-    font-size: 12px;
-    line-height: 25px;
-    text-align: center;
+    font-size: 14px;
 }
 </style>

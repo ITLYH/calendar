@@ -130,6 +130,84 @@ var appDataS = {
                 ]
             ]
         },
+        hotInfo: [
+            {
+                slides1: [
+                    {
+                        goodsImg: require("../../static/image/shouji_00.jpg"),
+                        goodsMsg: "买一送一"
+                    },
+                    {
+                        goodsImg: require("../../static/image/shouji_01.jpg"),
+                        goodsMsg: "买一送二"
+                    },
+                    {
+                        goodsImg: require("../../static/image/jiaju_00.jpg"),
+                        goodsMsg: "买一送二"
+                    },
+                    {
+                        goodsImg: require("../../static/image/kuzi_00.jpg"),
+                        goodsMsg: "买一送二"
+                    }
+                ],
+                slides2: [
+                    {
+                        goodsImg: require("../../static/image/shouji_00.jpg"),
+                        goodsMsg: "买一送一"
+                    },
+                    {
+                        goodsImg: require("../../static/image/kuzi_00.jpg"),
+                        goodsMsg: "买一送二"
+                    },
+                    {
+                        goodsImg: require("../../static/image/shouji_01.jpg"),
+                        goodsMsg: "买一送二"
+                    },
+                    {
+                        goodsImg: require("../../static/image/jiaju_00.jpg"),
+                        goodsMsg: "买一送二"
+                    }
+                ]
+            },
+            {
+                slides1: [
+                    {
+                        goodsImg: require("../../static/image/kuzi_00.jpg"),
+                        goodsMsg: "买一送二"
+                    },
+                    {
+                        goodsImg: require("../../static/image/shouji_00.jpg"),
+                        goodsMsg: "买一送一"
+                    },
+                    {
+                        goodsImg: require("../../static/image/jiaju_00.jpg"),
+                        goodsMsg: "买一送二"
+                    },
+                    {
+                        goodsImg: require("../../static/image/shouji_01.jpg"),
+                        goodsMsg: "买一送二"
+                    }
+                ],
+                slides2: [
+                    {
+                        goodsImg: require("../../static/image/jiaju_00.jpg"),
+                        goodsMsg: "买一送二"
+                    },
+                    {
+                        goodsImg: require("../../static/image/kuzi_00.jpg"),
+                        goodsMsg: "买一送二"
+                    },
+                    {
+                        goodsImg: require("../../static/image/shouji_00.jpg"),
+                        goodsMsg: "买一送一"
+                    },
+                    {
+                        goodsImg: require("../../static/image/shouji_01.jpg"),
+                        goodsMsg: "买一送二"
+                    }
+                ]
+            }
+        ]
     },
     calender: {},
     lifeInfo: {
