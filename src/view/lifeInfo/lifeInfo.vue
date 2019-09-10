@@ -60,19 +60,33 @@
                         <li v-for="item in list" id="lazy_li">
                             <div class="tab_barList_content">
                                 <div class="content_left">
-                                    <img class="user_img" src="../../../static/image/user_1.jpg" alt />
+                                    <img class="user_img" :src="item.userImg" alt />
                                     <div class="user_msg">
-                                        <span>X先生</span>
+                                        <span>{{item.user}}</span>
                                         <br />
-                                        <span>知名咨询博主</span>
+                                        <span>{{item.describe}}</span>
                                     </div>
                                 </div>
                                 <div class="content_right">
-                                    <label @click="actionSheet" id="icon-moreunfold" class="mint-button-text iconfont icon-moreunfold">&nbsp;&nbsp;</label>
+                                    <van-dropdown-menu id="content_right_dropdown">
+                                        <van-dropdown-item title="" ref="item">
+                                            <van-switch-cell v-model="item.switch1" active-color="#07c160" title="不感兴趣" />
+                                            <van-switch-cell v-model="item.switch2" active-color="#07c160" title="举报" />
+                                            <van-switch-cell v-model="item.switch3" active-color="#07c160" :title="'屏蔽作者：'+item.user" />
+                                            <van-switch-cell v-model="item.switch4" active-color="#07c160" title="内容不雅" />
+                                            <van-switch-cell v-model="item.switch5" active-color="#07c160" title="内容重复" />
+                                            <van-switch-cell v-model="item.switch6" active-color="#07c160" title="内容引起不适" />
+                                        </van-dropdown-item>
+                                    </van-dropdown-menu>
                                 </div>
                             </div>
-                            <img v-lazy.4="item.url" style="width:100%" />
-                            <mt-cell :title="item.title" :label="item.text" is-link :to="{ name: 'main' }"></mt-cell>
+                            <img :src="item.url" width="100%">
+                            <div class="img_detail">
+                                <span>查看详情</span>
+                                <span>
+                                    <van-icon name="arrow"></van-icon>
+                                </span>
+                            </div>
                         </li>
                     </ul>
                 </van-tab>
@@ -88,7 +102,7 @@
 </template>
 
 <script>
-import { NavBar, Tab, Tabs, DropdownMenu, DropdownItem, Checkbox, CheckboxGroup } from "vant";
+import { NavBar, Tab, Tabs, DropdownMenu, DropdownItem, Checkbox, CheckboxGroup, Lazyload } from "vant";
 import appData from "../../common/appDataS";
 import video from "../../components/video";
 export default {
@@ -107,31 +121,12 @@ export default {
             allLoaded: false,
             isShow: false,
             active: 1,
-            // switch1: false,
-            // switch2: false,
-            // switch3: false,
-            // switch4: false
         };
     },
     components: {
         "com-video": video
     },
     methods: {
-        onConfirm() {
-            this.$refs.item.toggle();
-        },
-        actionSheet: function () {
-            this.sheetVisible = true;
-        },
-        noInterest: function () {
-            console.log("不感兴趣");
-        },
-        contentRepeat: function () {
-            console.log("内容重复");
-        },
-        contentBad: function () {
-            console.log("内容引起不适");
-        },
         praiseCount: function (e) {
             var iconGood = e.currentTarget.firstElementChild;
             var iconGoodsss = e.currentTarget.nextElementSibling.firstElementChild;
@@ -219,11 +214,10 @@ export default {
     height: 40px;
     text-align: center;
     padding-right: 15px;
+    border: 0px;
 }
-image[lazy="loading"] {
-    width: 40px;
-    height: 300px;
-    margin: auto;
+.van-hairline--top-bottom::after, .van-hairline-unset--top-bottom::after {
+    border-width: 0px 0;
 }
 .tab_barList {
     box-shadow: 0 0 2px 0;
@@ -235,8 +229,8 @@ image[lazy="loading"] {
 }
 .tab_barList_content {
     padding: 5px;
-    height: 30px;
-    line-height: 27px;
+    height: 35px;
+    line-height: 32px;
     font-size: 13px;
     background-color: #fff;
 }
@@ -302,5 +296,24 @@ image[lazy="loading"] {
 }
 #toTop span {
     font-size: 25px;
+}
+.custom-title {
+    float: left;
+}
+#top_bar {
+}
+.img_detail {
+    margin-top: -5px;
+    height: 25px;
+    width: auto;
+    background: #fff;
+    padding: 10px 5px;
+    line-height: 25px;
+    text-align: left;
+}
+.img_detail > span:last-child {
+    float: right;
+    line-height: 25px;
+    color: #ccc;
 }
 </style>

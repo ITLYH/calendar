@@ -1,5 +1,5 @@
 <template>
-    <div id="main">
+    <div id="mains">
         <div class="search">
             <van-search id="search_box" v-model="value" background="linear-gradient(to right, gold, pink)" placeholder="请输入搜索关键词" show-action shape="round" :label="city" @search="onSearch">
                 <template #action>
@@ -19,28 +19,33 @@
         <!-- 轮播图end -->
 
         <!-- 导航栏start -->
-        <div id="nav_box">
-            <van-swipe :show-indicators="false">
-                <van-swipe-item>
-                    <div class="nav_div" v-for="(item ,index) in navPath1" :key="index">
-                        <img class="nav_img" :src="item.url" />
-                        <p class="nav_p">{{item.name}}</p>
-                    </div>
-                </van-swipe-item>
-                <van-swipe-item>
-                    <div class="nav_div" v-for="(item ,index) in navPath2" :key="index">
-                        <img class="nav_img" :src="item.url" />
-                        <p class="nav_p">{{item.name}}</p>
-                    </div>
-                </van-swipe-item>
-            </van-swipe>
+        <div class="nav_box_s">
+            <div id="nav_box">
+                <van-swipe :show-indicators="false">
+                    <van-swipe-item>
+                        <div class="nav_div" v-for="(item ,index) in navPath1" :key="index">
+                            <img class="nav_img" :src="item.url" />
+                            <p class="nav_p">{{item.name}}</p>
+                        </div>
+                    </van-swipe-item>
+                    <van-swipe-item>
+                        <div class="nav_div" v-for="(item ,index) in navPath2" :key="index">
+                            <img class="nav_img" :src="item.url" />
+                            <p class="nav_p">{{item.name}}</p>
+                        </div>
+                    </van-swipe-item>
+                </van-swipe>
+            </div>
         </div>
         <!-- 导航栏end -->
 
         <div class="cell_hot">
-            <van-nav-bar id="top_bar" left-text="热门信息">
-                <van-icon name="arrow" slot="right" size="15px" color="rgba(255, 100, 97, 0.7)" />
-            </van-nav-bar>
+            <van-cell value="更多" id="top_bar" is-link icon="shop-o"> 
+                <!-- 使用 title 插槽来自定义标题 -->
+                <template slot="title">
+                    <span class="custom-title">热门信息</span>
+                </template>
+            </van-cell>
         </div>
 
         <div>
@@ -89,41 +94,45 @@
         </div>
 
         <div class="cell_hot">
-            <van-nav-bar id="top_bar" left-text="每日逛">
-                <van-icon name="arrow" slot="right" size="15px" color="rgba(255, 100, 97, 0.7)" />
-            </van-nav-bar>
+            <van-cell value="更多" id="top_bar" is-link icon="shop-collect-o"> 
+                <!-- 使用 title 插槽来自定义标题 -->
+                <template slot="title">
+                    <span class="custom-title">每日逛</span>
+                </template>
+            </van-cell>
         </div>
 
         <div>
-            <van-grid :column-num="3">
-                <van-grid-item text="文字">
-                    <van-image src="https://img.yzcdn.cn/vant/apple-1.jpg" />
+            <van-grid :column-num="4">
+                <van-grid-item text="文字" v-for="(item,index) in daliyShops[0].grid1" :key="index">
+                    <van-image :src="item.goodsImg" />
                 </van-grid-item>
-                <van-grid-item>
-                    <van-image src="https://img.yzcdn.cn/vant/apple-2.jpg" />
-                </van-grid-item>
-                <van-grid-item>
-                    <van-image src="https://img.yzcdn.cn/vant/apple-3.jpg" />
+            </van-grid>
+            <van-grid :column-num="4">
+                <van-grid-item text="文字" v-for="(item,index) in daliyShops[0].grid2" :key="index">
+                    <van-image :src="item.goodsImg" />
                 </van-grid-item>
             </van-grid>
         </div>
 
         <div class="cell_hot">
-            <van-nav-bar id="top_bar" left-text="秒杀商品">
-                <van-icon name="arrow" slot="right" size="15px" color="rgba(255, 100, 97, 0.7)" />
-            </van-nav-bar>
+            <van-cell value="更多" id="top_bar" is-link icon="goods-collect-o"> 
+                <!-- 使用 title 插槽来自定义标题 -->
+                <template slot="title">
+                    <span class="custom-title">个性推荐</span>
+                </template>
+            </van-cell>
         </div>
 
         <div>
-            <van-grid :column-num="3">
-                <van-grid-item text="文字">
-                    <van-image src="https://img.yzcdn.cn/vant/apple-1.jpg" />
+            <van-grid :column-num="4">
+                <van-grid-item text="文字" v-for="(item,index) in daliyShops[1].grid1" :key="index">
+                    <van-image :src="item.goodsImg" />
                 </van-grid-item>
-                <van-grid-item>
-                    <van-image src="https://img.yzcdn.cn/vant/apple-2.jpg" />
-                </van-grid-item>
-                <van-grid-item>
-                    <van-image src="https://img.yzcdn.cn/vant/apple-3.jpg" />
+            </van-grid>
+            <van-grid :column-num="4">
+                <van-grid-item text="文字" v-for="(item,index) in daliyShops[1].grid2" :key="index">
+                    <van-image :src="item.goodsImg" />
                 </van-grid-item>
             </van-grid>
         </div>
@@ -154,7 +163,6 @@ import appData from "../../common/appDataS";
 import areaList from "../../common/area";
 
 export default {
-    name: "main",
     components: {},
     data() {
         const that = this;
@@ -171,6 +179,7 @@ export default {
             navPath2: appData.main.imgPath.nav[1],
             areaLists: areaList,
             hotInfos: appData.main.hotInfo,
+            daliyShops: appData.main.dailyShop,
             showss: false,
             addrCode: "440105",
             province: "",
@@ -200,7 +209,8 @@ export default {
             this.showss = false;
         }
     },
-    created() { },
+    created() {
+    },
     mounted() {
         const that = this;
         let label = document.getElementsByClassName("van-search__label")[0];
@@ -214,7 +224,7 @@ export default {
 };
 </script>
 <style scoped>
-#main {
+#mains {
     height: auto;
 }
 .swiper_bar {
@@ -247,8 +257,30 @@ export default {
     height: 155px;
     padding: 5px;
     background: url("../../../static/image/nav-bg4.jpg") no-repeat left -265px;
-    background-color: #fff;
+    background-color: gold;
     background-size: 100% auto;
+    border-bottom-right-radius: 35%;
+    border-bottom-left-radius: 35%;
+}
+.nav_box_s {
+    background: -webkit-linear-gradient(
+        left,
+        gold,
+        pink
+    ); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, gold, pink); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, gold, pink); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, gold, pink); /* 标准的语法 */
+}
+#top_bar {
+    background: -webkit-linear-gradient(
+        left,
+        gold,
+        pink
+    ); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, gold, pink); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, gold, pink); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, gold, pink); /* 标准的语法 */
 }
 .nav_div {
     flex: 0.2;
@@ -333,6 +365,10 @@ export default {
 .hot_row {
     display: inline-block;
     text-align: center;
+    padding: 0 5px;
+}
+.custom-title{
+    float: left;
 }
 </style>
 

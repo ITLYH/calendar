@@ -5,12 +5,14 @@ import router from './router/index.js'
 import App from './App.vue'
 import store from './store/store.js'
 import Vant from 'vant';
+import { Lazyload } from 'vant';
 import 'vant/lib/index.css';
 
 // import './config/rem'
 
 Vue.config.productionTip = false
 Vue.use(Vant);
+Vue.use(Lazyload);
 
 Vue.use(VueRouter)
 Vue.use(Vuex)

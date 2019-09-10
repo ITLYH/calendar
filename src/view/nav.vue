@@ -26,7 +26,6 @@
 <script>
 import { Tabbar, TabbarItem } from 'vant';
 export default {
-    name: "nav",
     data() {
         return {};
     },

@@ -207,6 +207,84 @@ var appDataS = {
                     }
                 ]
             }
+        ],
+        dailyShop: [
+            {
+                grid1: [
+                    {
+                        goodsImg: require("../../static/image/jiaju_00.jpg"),
+                        goodsMsg: "买一送二"
+                    },
+                    {
+                        goodsImg: require("../../static/image/kuzi_00.jpg"),
+                        goodsMsg: "买一送二"
+                    },
+                    {
+                        goodsImg: require("../../static/image/fuzhuang_01.jpg"),
+                        goodsMsg: "买一送一"
+                    },
+                    {
+                        goodsImg: require("../../static/image/shouji_01.jpg"),
+                        goodsMsg: "买一送二"
+                    }
+                ],
+                grid2: [
+                    {
+                        goodsImg: require("../../static/image/baobao_00.jpg"),
+                        goodsMsg: "买一送一"
+                    },
+                    {
+                        goodsImg: require("../../static/image/kuzi_00.jpg"),
+                        goodsMsg: "买一送二"
+                    },
+                    {
+                        goodsImg: require("../../static/image/shouji_01.jpg"),
+                        goodsMsg: "买一送二"
+                    },
+                    {
+                        goodsImg: require("../../static/image/fuzhuang_01.jpg"),
+                        goodsMsg: "买一送二"
+                    }
+                ]
+            },
+            {
+                grid1: [
+                    {
+                        goodsImg: require("../../static/image/kuzi_00.jpg"),
+                        goodsMsg: "买一送二"
+                    },
+                    {
+                        goodsImg: require("../../static/image/fuzhuang_01.jpg"),
+                        goodsMsg: "买一送一"
+                    },
+                    {
+                        goodsImg: require("../../static/image/fuzhuang_02.jpg"),
+                        goodsMsg: "买一送二"
+                    },
+                    {
+                        goodsImg: require("../../static/image/shouji_01.jpg"),
+                        goodsMsg: "买一送二"
+                    }
+                ],
+                grid2: [
+                    {
+                        goodsImg: require("../../static/image/jiaju_00.jpg"),
+                        goodsMsg: "买一送二"
+                    },
+                    {
+                        goodsImg: require("../../static/image/kuzi_00.jpg"),
+                        goodsMsg: "买一送二"
+                    },
+                    {
+                        goodsImg: require("../../static/image/shouji_00.jpg"),
+                        goodsMsg: "买一送一"
+                    },
+                    {
+                        goodsImg: require("../../static/image/shouji_01.jpg"),
+                        goodsMsg: "买一送二"
+                    }
+                ]
+            }
         ]
     },
     calender: {},
@@ -633,34 +711,58 @@ var appDataS = {
         ],
         imgInfo: [
             {
+                user: "Mr.Li",
+                describe: "知名咨询博主",
+                userImg: require("../../static/image/user_05.jpg"),
                 url: "http://fuss10.elemecdn.com/b/18/0678e57cb1b226c04888e7f244c20jpeg.jpeg",
                 title: "沙拉",
                 text: "营养和美味的代名词"
             }, {
+                user: "暴走的格子",
+                describe: "知名吐槽博主",
+                userImg: require("../../static/image/user_02.jpg"),
                 url: "http://fuss10.elemecdn.com/3/1e/42634e29812e6594c98a89e922c60jpeg.jpeg",
                 title: "营养餐点",
                 text: "营养和美味的代名词"
             }, {
+                user: "隔壁老王",
+                describe: "知名咨询博主",
+                userImg: require("../../static/image/user_01.jpg"),
                 url: "http://fuss10.elemecdn.com/1/c5/95c37272d3e554317dcec1e17a9f5jpeg.jpeg",
                 title: "寿司",
                 text: "营养和美味的代名词"
             }, {
+                user: "狂奔的橡皮擦",
+                describe: "知名咨询博主",
+                userImg: require("../../static/image/user_05.jpg"),
                 url: "http://fuss10.elemecdn.com/b/df/b630636b444346e38cef6c59f6457jpeg.jpeg",
                 title: "薄荷",
                 text: "清新口气更清新你"
             }, {
+                user: "有趣的皮囊_",
+                describe: "知名咨询博主",
+                userImg: require("../../static/image/user_04.jpg"),
                 url: "http://fuss10.elemecdn.com/7/a5/596ab03934612236f807b92906fd8jpeg.jpeg",
                 title: "薄荷",
                 text: "清新口气更清新你"
             }, {
+                user: "huyaz",
+                describe: "知名咨询博主",
+                userImg: require("../../static/image/user_02.jpg"),
                 url: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1566880390745&di=764a401da1176d4e2eb170c3c82054b5&imgtype=0&src=http%3A%2F%2Fwx3.sinaimg.cn%2Flarge%2F006dKyvTgy1frvg2dhy69j30rs0fmx49.jpg",
                 title: "阳朔",
                 text: "全国不得不去的城镇之一"
             }, {
+                user: "Mr.9",
+                describe: "知名咨询博主",
+                userImg: require("../../static/image/user_03.jpg"),
                 url: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1566880632278&di=4997ce34536d3619e90fa50ab08477f0&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fitbbs%2F1308%2F26%2Fc4%2F24912547_1377501622802_mthumb.jpg",
                 title: "稻城.亚丁",
                 text: "全国不得不去的城镇之一"
             }, {
+                user: "Mr.s",
+                describe: "知名咨询博主",
+                userImg: require("../../static/image/user_01.jpg"),
                 url: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1566880828178&di=cb5d96e6ae307ce30a1025161b04a789&imgtype=0&src=http%3A%2F%2Fforum.xitek.com%2F200506%2F116%2F11641%2F11641_1120036164.jpg",
                 title: "香格里拉",
                 text: "一个让人心醉的城镇"
