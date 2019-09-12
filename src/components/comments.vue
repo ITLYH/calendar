@@ -43,7 +43,7 @@
         <!-- 评论列表 -->
         <div class="comments_list" ref="comments_top">
             <div class="comments_listS" v-for="(item,index) in commentsList" :key="index">
-                <img :src="item.comments_user_img" @click="goUserPage(item)"/>
+                <img :src="item.comments_user_img" @click="goUserPage(item)" />
                 <div>
                     <div>
                         <span @click="goUserPage(item)">{{item.comments_user}}</span> ·
@@ -269,8 +269,8 @@ export default {
             this.moreComments = item;
             this.show = true;
         },
-        goUserPage(info){
-            this.$router.push({ name: 'userPage', query: { userinfo: JSON.stringify(info) }});
+        goUserPage(info) {
+            this.$router.push({ name: 'userPage', query: { userinfo: JSON.stringify(info) } });
         }
     },
     created() {

@@ -2,12 +2,12 @@
     <div id="userPage">
         <div>
             <div class="top">
-                <van-nav-bar fixed :title="userInfo.comments_user" id="top_bar" left-arrow @click-left="onClickLeft">
+                <van-nav-bar fixed :title="userInfo.comments_user?userInfo.comments_user:userInfo.user" id="top_bar" left-arrow @click-left="onClickLeft">
                     <van-icon name="ellipsis" slot="right" size="25px" color="rgba(255, 100, 97, 0.7)" @click="set" />
                 </van-nav-bar>
             </div>
             <div class="center_box">
-                <van-image round width="7rem" height="7rem" :src="userInfo.comments_user_img">
+                <van-image round width="7rem" height="7rem" :src="userInfo.comments_user_img ? userInfo.comments_user_img:userInfo.userImg">
                     <template v-slot:loading>
                         <van-loading type="spinner" size="20" />
                     </template>
@@ -43,10 +43,24 @@
             <div>
                 <van-tabs v-model="active" sticky>
                     <van-tab title="全部">
-                        内容1
+                        <div class="tab_barList_content">
+                            <div class="content_left">
+                                <img class="user_img" :src="userInfo.comments_user_img ? userInfo.comments_user_img:userInfo.userImg" alt />
+                                <div class="user_msg">
+                                    <span>{{userInfo.comments_user?userInfo.comments_user:userInfo.user}}</span>
+                                    <br />
+                                    <span>5分钟之前</span>
+                                </div>
+                            </div>
+                            <div>
+                                <p>啊？</p>
+                                <div>
+                                    
+                                </div>
+                            </div>
+                        </div>
                     </van-tab>
                     <van-tab title="帖子">
-                        内容2
                     </van-tab>
                     <van-tab title="回复">
                         内容3
@@ -63,11 +77,10 @@
 <script>
 
 export default {
-    name: "userPage",
     data() {
         return {
             userInfo: null,
-            active:0, 
+            active: 0,
         }
     },
     methods: {
@@ -78,7 +91,7 @@ export default {
             this.$router.go(-1)
         }
     },
-    created(){
+    created() {
         this.userInfo = JSON.parse(this.$route.query.userinfo);
     }
 }
@@ -154,5 +167,35 @@ export default {
     border: 0.5px solid #f3f3f9;
     border-radius: 10px;
     padding: 0 3px;
+}
+.tab_barList_content {
+    padding: 5px;
+    height: 35px;
+    line-height: 32px;
+    font-size: 13px;
+    background-color: #fff;
+}
+.user_img {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+.user_msg {
+    display: inline-block;
+    padding-top: 3px;
+    height: 32px;
+    width: 100px;
+    font-size: 10px;
+    line-height: 15px;
+    text-align: left;
+    vertical-align: middle;
+}
+.user_msg > span:last-child {
+    color: #ccc;
+}
+.content_left {
+    float: left;
 }
 </style>

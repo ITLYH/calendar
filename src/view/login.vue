@@ -87,7 +87,7 @@ export default {
                     that.$router.push({ path: "/nav" });
                 }, 1500)
             } else {
-                Toast.fail('登录失败，用户名或密码错误，请重新输入。');
+                this.$toast('登录失败，用户名或密码错误，请重新输入。');
                 this.username = "";
                 this.password = "";
             }

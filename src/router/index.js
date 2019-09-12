@@ -26,7 +26,7 @@ const router = new VueRouter({
                 { path: '/main', name: 'main', component: main },
                 { path: '/day', name: 'day', component: day },
                 { path: '/personalCenter', name: 'personalCenter', component: personalCenter, meta: { permission: true }},
-                { path: '/lifeInfo', name: 'lifeInfo', component: lifeInfo },
+                { path: '/lifeInfo', name: 'lifeInfo', component: lifeInfo, meta: { keepAlive: true}},
             ],
         },
         { path: '/comments', name: 'comments', component: comments },

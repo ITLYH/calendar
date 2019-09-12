@@ -1,67 +1,123 @@
 <template>
     <div>
         <div ref="top_2">
-            <van-tabs v-model="active">
+            <!-- :animated="true" tabs切换动画开关，加入这个属性会造成van-dropdown-menu显示异常 -->
+            <van-tabs v-model="active" :swipeable="true" :sticky="true" @scroll="isScroll">
                 <van-tab title="关注">关注</van-tab>
                 <van-tab title="推荐">
-                    <div class="tab_barList" v-for="(item,index) in videoList" :key="index">
-                        <div class="tab_barList_content">
-                            <div class="content_left">
-                                <img class="user_img" :src="item.userImg" alt />
-                                <div class="user_msg">
-                                    <span>{{item.user}}</span>
-                                    <br />
-                                    <span>{{item.describe}}</span>
+                    <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
+                        <div class="tab_barList" v-for="(item,index) in videoList" :key="index">
+                            <div class="tab_barList_content">
+                                <div class="content_left">
+                                    <img class="user_img" :src="item.userImg" @click="goUserPage(item)" alt />
+                                    <div class="user_msg" @click="goUserPage(item)">
+                                        <span>{{item.user}}</span>
+                                        <br />
+                                        <span>{{item.describe}}</span>
+                                    </div>
+                                </div>
+                                <div class="content_right">
+                                    <van-dropdown-menu id="content_right_dropdown">
+                                        <van-dropdown-item title="" ref="item">
+                                            <van-switch-cell v-model="item.switch1" active-color="#07c160" title="不感兴趣" />
+                                            <van-switch-cell v-model="item.switch2" active-color="#07c160" title="举报" />
+                                            <van-switch-cell v-model="item.switch3" active-color="#07c160" :title="'屏蔽作者：'+item.user" />
+                                            <van-switch-cell v-model="item.switch4" active-color="#07c160" title="内容不雅" />
+                                            <van-switch-cell v-model="item.switch5" active-color="#07c160" title="内容重复" />
+                                            <van-switch-cell v-model="item.switch6" active-color="#07c160" title="内容引起不适" />
+                                        </van-dropdown-item>
+                                    </van-dropdown-menu>
                                 </div>
                             </div>
-                            <div class="content_right">
-                                <van-dropdown-menu id="content_right_dropdown">
-                                    <van-dropdown-item title="" ref="item">
-                                        <van-switch-cell v-model="item.switch1" active-color="#07c160" title="不感兴趣" />
-                                        <van-switch-cell v-model="item.switch2" active-color="#07c160" title="举报" />
-                                        <van-switch-cell v-model="item.switch3" active-color="#07c160" :title="'屏蔽作者：'+item.user" />
-                                        <van-switch-cell v-model="item.switch4" active-color="#07c160" title="内容不雅" />
-                                        <van-switch-cell v-model="item.switch5" active-color="#07c160" title="内容重复" />
-                                        <van-switch-cell v-model="item.switch6" active-color="#07c160" title="内容引起不适" />
-                                    </van-dropdown-item>
-                                </van-dropdown-menu>
-                            </div>
-                        </div>
 
-                        <div class="tab_barList_video_box">
-                            <p class="log_title">{{item.title}}</p>
-                            <com-video :urls="item.url" v-if="item.url.split('.')[item.url.split('.').length-1] !== 'jpg'"></com-video>
-                            <img :src="item.url" alt height="215" width="auto" v-else />
-                        </div>
+                            <div class="tab_barList_video_box">
+                                <p class="log_title">{{item.title}}</p>
+                                <com-video :urls="item.url" v-if="item.url.split('.')[item.url.split('.').length-1] !== 'jpg'"></com-video>
+                                <img :src="item.url" alt height="215" width="auto" v-else />
+                            </div>
 
-                        <div class="tab_barList_content">
-                            <div class="content_footer">
-                                <div class="tab_content" @click="praiseCount($event)">
-                                    <i class="iconfont icon-good">&nbsp;{{item.praise}}</i>
-                                </div>
-                                <div class="tab_content" @click="treadCount($event)">
-                                    <i class="iconfont icon-bad">&nbsp;{{item.tread}}</i>
-                                </div>
-                                <div class="tab_content" @click="goComments(item)">
-                                    <i class="iconfont icon-comments"></i>
-                                    <span>&nbsp;{{item.comments}}万</span>&nbsp;&nbsp;
-                                </div>
-                                <div class="tab_content" @click="shareOrder($event)">
-                                    <i class="iconfont icon-skip"></i>
-                                    <span>&nbsp;{{item.share}}万</span>&nbsp;&nbsp;
+                            <div class="tab_barList_content">
+                                <div class="content_footer">
+                                    <div class="tab_content" @click="praiseCount($event)">
+                                        <i class="iconfont icon-good">&nbsp;{{item.praise}}</i>
+                                    </div>
+                                    <div class="tab_content" @click="treadCount($event)">
+                                        <i class="iconfont icon-bad">&nbsp;{{item.tread}}</i>
+                                    </div>
+                                    <div class="tab_content" @click="goComments(item)">
+                                        <i class="iconfont icon-comments"></i>
+                                        <span>&nbsp;{{item.comments}}万</span>&nbsp;&nbsp;
+                                    </div>
+                                    <div class="tab_content" @click="shareOrder($event)">
+                                        <i class="iconfont icon-skip"></i>
+                                        <span>&nbsp;{{item.share}}万</span>&nbsp;&nbsp;
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </van-pull-refresh>
                 </van-tab>
-                <van-tab title="视频">内容 3</van-tab>
+                <van-tab title="视频">
+                    <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
+                        <div class="tab_barList" v-for="(item,index) in videoList" :key="index" v-if="item.url.split('.')[item.url.split('.').length-1] !== 'jpg'">
+                            <div class="tab_barList_content">
+                                <div class="content_left">
+                                    <img class="user_img" :src="item.userImg"  @click="goUserPage(item)" alt />
+                                    <div class="user_msg"  @click="goUserPage(item)">
+                                        <span>{{item.user}}</span>
+                                        <br />
+                                        <span>{{item.describe}}</span>
+                                    </div>
+                                </div>
+                                <div class="content_right">
+                                    <van-dropdown-menu id="content_right_dropdown">
+                                        <van-dropdown-item title="" ref="item">
+                                            <van-switch-cell v-model="item.switch1" active-color="#07c160" title="不感兴趣" />
+                                            <van-switch-cell v-model="item.switch2" active-color="#07c160" title="举报" />
+                                            <van-switch-cell v-model="item.switch3" active-color="#07c160" :title="'屏蔽作者：'+item.user" />
+                                            <van-switch-cell v-model="item.switch4" active-color="#07c160" title="内容不雅" />
+                                            <van-switch-cell v-model="item.switch5" active-color="#07c160" title="内容重复" />
+                                            <van-switch-cell v-model="item.switch6" active-color="#07c160" title="内容引起不适" />
+                                        </van-dropdown-item>
+                                    </van-dropdown-menu>
+                                </div>
+                            </div>
+
+                            <div class="tab_barList_video_box">
+                                <p class="log_title">{{item.title}}</p>
+                                <com-video :urls="item.url"></com-video>
+                            </div>
+
+                            <div class="tab_barList_content">
+                                <div class="content_footer">
+                                    <div class="tab_content" @click="praiseCount($event)">
+                                        <i class="iconfont icon-good">&nbsp;{{item.praise}}</i>
+                                    </div>
+                                    <div class="tab_content" @click="treadCount($event)">
+                                        <i class="iconfont icon-bad">&nbsp;{{item.tread}}</i>
+                                    </div>
+                                    <keep-alive>
+                                        <div class="tab_content" @click="goComments(item)">
+                                            <i class="iconfont icon-comments"></i>
+                                            <span>&nbsp;{{item.comments}}万</span>&nbsp;&nbsp;
+                                        </div>
+                                    </keep-alive>
+                                    <div class="tab_content" @click="shareOrder($event)">
+                                        <i class="iconfont icon-skip"></i>
+                                        <span>&nbsp;{{item.share}}万</span>&nbsp;&nbsp;
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </van-pull-refresh>
+                </van-tab>
                 <van-tab title="图片">
                     <ul>
                         <li v-for="item in list" id="lazy_li">
                             <div class="tab_barList_content">
                                 <div class="content_left">
-                                    <img class="user_img" :src="item.userImg" alt />
-                                    <div class="user_msg">
+                                    <img class="user_img" :src="item.userImg"  @click="goUserPage(item)" alt />
+                                    <div class="user_msg"  @click="goUserPage(item)">
                                         <span>{{item.user}}</span>
                                         <br />
                                         <span>{{item.describe}}</span>
@@ -111,7 +167,6 @@ export default {
         return {
             share: false,
             value: "",
-            selected: "2",
             praise: 0,
             tread: 0,
             checked: false,
@@ -121,13 +176,15 @@ export default {
             allLoaded: false,
             isShow: false,
             active: 1,
+            count: 0,
+            isLoading: false
         };
     },
     components: {
         "com-video": video
     },
     methods: {
-        praiseCount: function (e) {
+        praiseCount(e) {
             var iconGood = e.currentTarget.firstElementChild;
             var iconGoodsss = e.currentTarget.nextElementSibling.firstElementChild;
             this.praise = iconGood.innerText;
@@ -144,7 +201,7 @@ export default {
                 iconGood.style.color = "red";
             }
         },
-        treadCount: function (e) {
+        treadCount(e) {
             var iconBad = e.currentTarget.firstElementChild;
             var iconBadsss = e.currentTarget.previousElementSibling.firstElementChild;
             this.tread = iconBad.innerText;
@@ -159,25 +216,12 @@ export default {
                 iconBad.style.color = "red";
             }
         },
-        shareOrder: function () {
+        shareOrder() {
             this.share = true;
         },
-        goComments: function (m) {
+        goComments(m) {
             localStorage.setItem("item_detail", JSON.stringify(m));
             this.$router.push({ path: "/comments", query: { item: m } });
-        },
-        loadTop() {
-            //下拉刷新
-            setTimeout(() => {
-                this.$refs.loadmore.onTopLoaded();
-            }, 1500);
-        },
-        loadBottom() {
-            //上拉加载更多
-            setTimeout(() => {
-                this.allLoaded = true;
-                this.$refs.loadmore.onBottomLoaded();
-            }, 1500);
         },
         toTop() {
             let h = this.$refs.top_2.offsetTop;
@@ -196,13 +240,34 @@ export default {
             } else {
                 this.isShow = false;
             }
+        },
+        onRefresh() {
+            setTimeout(() => {
+                this.$toast('刷新成功');
+                this.isLoading = false;
+            }, 500);
+        },
+        isScroll() {
+            this.isFixed = true;
+        },
+        goUserPage(info) {
+            this.$router.push({ name: 'userPage', query: { userinfo: JSON.stringify(info) } });
         }
     },
     created() { },
     mounted() {
         window.addEventListener("scroll", this.showIcon);
     },
-    watch: {}
+    watch: {
+        active: function (n, o) {
+            console.log(n, o);
+            console.log(this.$route.path);
+            const saveN = n;
+            if (this.$route.path == "/lifeInfo") {
+                this.active = saveN;
+            }
+        }
+    }
 };
 </script>
 
@@ -216,7 +281,8 @@ export default {
     padding-right: 15px;
     border: 0px;
 }
-.van-hairline--top-bottom::after, .van-hairline-unset--top-bottom::after {
+.van-hairline--top-bottom::after,
+.van-hairline-unset--top-bottom::after {
     border-width: 0px 0;
 }
 .tab_barList {
