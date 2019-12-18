@@ -137,6 +137,8 @@
             </van-grid>
         </div>
 
+        <img id="qr" src="../../../static/image/qr_01.png" alt="">
+
         <div>
             <div class="qrcodeWrap">
                 <img style="" src="../../../static/image/weChat_01.jpg" alt="扫描二维码" />
@@ -389,6 +391,11 @@ export default {
     display: block;
     border: none;
     opacity: 0;    /*visibility:hidden*/
+}
+#qr{
+    width: 150px; height: 150px; 
+    display: block;
+    z-index: 9999;
 }
 </style>
 
