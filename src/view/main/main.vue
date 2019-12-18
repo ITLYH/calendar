@@ -40,7 +40,7 @@
         <!-- 导航栏end -->
 
         <div class="cell_hot">
-            <van-cell value="更多" id="top_bar" is-link icon="shop-o"> 
+            <van-cell value="更多" id="top_bar" is-link icon="shop-o">
                 <!-- 使用 title 插槽来自定义标题 -->
                 <template slot="title">
                     <span class="custom-title">热门信息</span>
@@ -94,7 +94,7 @@
         </div>
 
         <div class="cell_hot">
-            <van-cell value="更多" id="top_bar" is-link icon="shop-collect-o"> 
+            <van-cell value="更多" id="top_bar" is-link icon="shop-collect-o">
                 <!-- 使用 title 插槽来自定义标题 -->
                 <template slot="title">
                     <span class="custom-title">每日逛</span>
@@ -116,7 +116,7 @@
         </div>
 
         <div class="cell_hot">
-            <van-cell value="更多" id="top_bar" is-link icon="goods-collect-o"> 
+            <van-cell value="更多" id="top_bar" is-link icon="goods-collect-o">
                 <!-- 使用 title 插槽来自定义标题 -->
                 <template slot="title">
                     <span class="custom-title">个性推荐</span>
@@ -135,6 +135,12 @@
                     <van-image :src="item.goodsImg" />
                 </van-grid-item>
             </van-grid>
+        </div>
+
+        <div>
+            <div class="qrcodeWrap">
+                <img style="" src="../../../static/image/weChat_01.jpg" alt="扫描二维码" />
+            </div>
         </div>
 
         <!-- 地址选择start -->
@@ -367,8 +373,22 @@ export default {
     text-align: center;
     padding: 0 5px;
 }
-.custom-title{
+.custom-title {
     float: left;
+}
+
+.qrcodeWrap {
+    position: relative; width: 150px; height: 150px;
+    margin: 0 auto; 
+    background: url(qrcode.jpg) no-repeat center center;
+    background-size: contain;
+}
+.qrcodeWrap img {
+    position: absolute; left: -75px; top: -75px;
+    width: 150px; height: 150px; 
+    display: block;
+    border: none;
+    opacity: 0;    /*visibility:hidden*/
 }
 </style>
 
