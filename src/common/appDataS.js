@@ -212,7 +212,7 @@ var appDataS = {
             {
                 grid1: [
                     {
-                        goodsImg: require("../../static/image/jiaju_00.jpg"),
+                        goodsImg: require("../../static/image/weChat_01.jpg"),
                         goodsMsg: "买一送二"
                     },
                     {
