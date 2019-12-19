@@ -138,7 +138,7 @@
         </div>
 
         <div>
-            <img id="qr_img" src="../../../static/image/qr_01.png" alt="">
+            <img id="qr_img" :src="qr_img" alt="">
         </div>
 
         <!-- 地址选择start -->
@@ -177,6 +177,7 @@ export default {
             tread: 0, // 踩
             comments: 150, // 评论
             share: 66, // 分享
+            qr_img: "",
             searchData: appData.main.searchData,
             slidesPath: appData.main.imgPath.slides,
             navPath1: appData.main.imgPath.nav[0],
@@ -211,9 +212,16 @@ export default {
             this.city = e[1].name;
             this.district = e[2].name;
             this.showss = false;
+        },
+        addqr() {
+            this.qr_img = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1576732855557&di=6714228fb865fc32876de9e6b394049f&imgtype=0&src=http%3A%2F%2F7.pic.pc6.com%2Fup%2F2016-12%2F20161213153647219.png"
+        },
+        addqr1() {
         }
     },
     created() {
+        // this.qr_img = "../../../static/image/qr_01.png";
+        this.addqr();
     },
     mounted() {
         const that = this;
@@ -228,7 +236,7 @@ export default {
 };
 </script>
 <style scoped>
-#qr_img{
+#qr_img {
     height: 100px;
     width: 100px;
     display: block;
