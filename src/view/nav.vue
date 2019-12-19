@@ -7,7 +7,7 @@
                 <p class="icon iconfont icon-warehouse-delivery"></p>
                 Main
             </van-tabbar-item>
-            <van-tabbar-item replace to="/userPage">
+            <van-tabbar-item replace to="/day">
                 <p class="icon iconfont icon-calendar"></p>
                 Calendar
             </van-tabbar-item>

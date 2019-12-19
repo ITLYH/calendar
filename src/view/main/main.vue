@@ -216,12 +216,14 @@ export default {
         addqr() {
             this.qr_img = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1576732855557&di=6714228fb865fc32876de9e6b394049f&imgtype=0&src=http%3A%2F%2F7.pic.pc6.com%2Fup%2F2016-12%2F20161213153647219.png"
         },
-        addqr1() {
-        }
     },
     created() {
         // this.qr_img = "../../../static/image/qr_01.png";
         this.addqr();
+        var that = this;
+        setTimeout(function(){
+            that.qr_img = require("../../../static/image/qr_01.png");
+        },3000)
     },
     mounted() {
         const that = this;
