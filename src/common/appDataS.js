@@ -212,7 +212,7 @@ var appDataS = {
             {
                 grid1: [
                     {
-                        goodsImg: require("../../static/image/weChat_01.jpg"),
+                        goodsImg: require("../../static/image/kuzi_00.jpg"),
                         goodsMsg: "买一送二"
                     },
                     {
@@ -293,7 +293,7 @@ var appDataS = {
             {
                 user: "Mr.Li",
                 describe: "知名咨询博主",
-                url: require("../../static/video/video_1.mp4"),
+                url: "http://hc.yinyuetai.com/uploads/videos/common/7445016CD1207342E62EFA86B5389E81.mp4",
                 userImg: require("../../static/image/user_05.jpg"),
                 title: "黑手伸进香港，美国已不再隐藏？必遭中国惩罚！华春莹字字凌厉",
                 praise: 99,
@@ -350,7 +350,7 @@ var appDataS = {
             {
                 user: "有趣有趣",
                 describe: "知名vlog博主",
-                url: require("../../static/video/video_1.mp4"),
+                url: "http://hc.yinyuetai.com/uploads/videos/common/7445016CD1207342E62EFA86B5389E81.mp4",
                 userImg: require("../../static/image/user_03.jpg"),
                 title: "黑手伸进香港，美国已不再隐藏？必遭中国惩罚！华春莹字字凌厉",
                 praise: 59,
@@ -426,7 +426,7 @@ var appDataS = {
             {
                 user: "有趣有趣",
                 describe: "知名vlog博主",
-                url: require("../../static/video/video_1.mp4"),
+                url: "http://hc.yinyuetai.com/uploads/videos/common/7445016CD1207342E62EFA86B5389E81.mp4",
                 userImg: require("../../static/image/user_03.jpg"),
                 title: "黑手伸进香港，美国已不再隐藏？必遭中国惩罚！华春莹字字凌厉",
                 praise: 59,
@@ -483,7 +483,7 @@ var appDataS = {
             {
                 user: "急眼的滑稽",
                 describe: "知名短视频博主",
-                url: require("../../static/video/video_1.mp4"),
+                url: "http://hc.yinyuetai.com/uploads/videos/common/7445016CD1207342E62EFA86B5389E81.mp4",
                 userImg: require("../../static/image/user_02.jpg"),
                 title: "老虎搂着女主人，睡醒后立马变脸，镜头记录全过程",
                 praise: 99,
@@ -502,7 +502,7 @@ var appDataS = {
             {
                 user: "有趣有趣",
                 describe: "知名vlog博主",
-                url: require("../../static/video/video_1.mp4"),
+                url: "http://hc.yinyuetai.com/uploads/videos/common/7445016CD1207342E62EFA86B5389E81.mp4",
                 userImg: require("../../static/image/user_03.jpg"),
                 title: "黑手伸进香港，美国已不再隐藏？必遭中国惩罚！华春莹字字凌厉",
                 praise: 59,
@@ -559,7 +559,7 @@ var appDataS = {
             {
                 user: "急眼的滑稽",
                 describe: "知名短视频博主",
-                url: require("../../static/video/video_1.mp4"),
+                url: "http://hc.yinyuetai.com/uploads/videos/common/7445016CD1207342E62EFA86B5389E81.mp4",
                 userImg: require("../../static/image/user_02.jpg"),
                 title: "老虎搂着女主人，睡醒后立马变脸，镜头记录全过程",
                 praise: 99,
@@ -578,7 +578,7 @@ var appDataS = {
             {
                 user: "有趣有趣",
                 describe: "知名vlog博主",
-                url: require("../../static/video/video_1.mp4"),
+                url: "http://hc.yinyuetai.com/uploads/videos/common/7445016CD1207342E62EFA86B5389E81.mp4",
                 userImg: require("../../static/image/user_03.jpg"),
                 title: "黑手伸进香港，美国已不再隐藏？必遭中国惩罚！华春莹字字凌厉",
                 praise: 59,
@@ -635,7 +635,7 @@ var appDataS = {
             {
                 user: "急眼的滑稽",
                 describe: "知名短视频博主",
-                url: require("../../static/video/video_1.mp4"),
+                url: "http://hc.yinyuetai.com/uploads/videos/common/7445016CD1207342E62EFA86B5389E81.mp4",
                 userImg: require("../../static/image/user_02.jpg"),
                 title: "老虎搂着女主人，睡醒后立马变脸，镜头记录全过程",
                 praise: 99,
@@ -654,7 +654,7 @@ var appDataS = {
             {
                 user: "有趣有趣",
                 describe: "知名vlog博主",
-                url: require("../../static/video/video_1.mp4"),
+                url: "http://hc.yinyuetai.com/uploads/videos/common/7445016CD1207342E62EFA86B5389E81.mp4",
                 userImg: require("../../static/image/user_03.jpg"),
                 title: "黑手伸进香港，美国已不再隐藏？必遭中国惩罚！华春莹字字凌厉",
                 praise: 59,

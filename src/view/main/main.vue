@@ -137,12 +137,8 @@
             </van-grid>
         </div>
 
-        <img id="qr" src="../../../static/image/qr_01.png" alt="">
-
         <div>
-            <div class="qrcodeWrap">
-                <img style="" src="../../../static/image/weChat_01.jpg" alt="扫描二维码" />
-            </div>
+            <img id="qr_img" src="../../../static/image/qr_01.png" alt="">
         </div>
 
         <!-- 地址选择start -->
@@ -232,6 +228,12 @@ export default {
 };
 </script>
 <style scoped>
+#qr_img{
+    height: 100px;
+    width: 100px;
+    display: block;
+    padding: 50px;
+}
 #mains {
     height: auto;
 }
@@ -377,25 +379,6 @@ export default {
 }
 .custom-title {
     float: left;
-}
-
-.qrcodeWrap {
-    position: relative; width: 150px; height: 150px;
-    margin: 0 auto; 
-    background: url(qrcode.jpg) no-repeat center center;
-    background-size: contain;
-}
-.qrcodeWrap img {
-    position: absolute; left: -75px; top: -75px;
-    width: 150px; height: 150px; 
-    display: block;
-    border: none;
-    opacity: 0;    /*visibility:hidden*/
-}
-#qr{
-    width: 150px; height: 150px; 
-    display: block;
-    z-index: 9999;
 }
 </style>
 
